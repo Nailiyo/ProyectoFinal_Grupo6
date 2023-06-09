@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mostrar Preguntas</title>
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .btn-primary {
+        background-color: #0083ca;
+      }
+
+      .btn-primary:hover {
+        background-color: #005c89;
+      }
+    </style>
+</head>
+<body>
+    <h1>Mostrar Preguntas</h1>
+
+    <table> 
+        <tr>
+        <td><b> ID </b> </td>
+        <td><b> Pregunta </b> </td>
+        <td><b> Opcion1 </b> </td>
+        <td><b> Opcion2 </b> </td>
+        <td><b> Opcion3 </b> </td>
+        <td><b> Opcion4 </b> </td>
+        <td><b> Estado </b> </td>
+        </tr>
+        <tr>
+        </tr> 
+         <tr th:each="docente : ${preguntaListado}"> 
+                  <td th:text="${idPregunta}"></td>
+                  <td th:text="${pregunta}"></td>
+                  <td th:text="${opcion1}"></td>
+                  <td th:text="${opcion2}"></td> 
+                  <td th:text="${opcion3}"></td>
+                  <td th:text="${opcion4}"></td>
+                  <td th:boolean="${estadoPregunta}"></td> 
+                  <td> 
+                         <button class="btn btn-primary" type="submit">Editar</button> 
+                         <button class="btn btn-primary" type="submit">Borrar</button>
+                 </td>
+    </table>
+</body>
+</html>
