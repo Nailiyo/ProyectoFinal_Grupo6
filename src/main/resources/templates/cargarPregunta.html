@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Carga de Pregunta</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: #eaf2f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .pregunta {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0083ca;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .custom-label {
+      font-weight: bold;
+      color: #0083ca;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    select.form-control {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url('down-arrow.png') no-repeat right center;
+      padding-right: 25px;
+      color: #000000;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+
+    select.form-control option {
+      color: #000000;
+    }
+
+    /* Estilos específicos para Opcion Correcta */
+    label.custom-label[for="opcion-correcta"] {
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* Estilos específicos para Nivel */
+    label.custom-label[for="nivel"] {
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* Estilos para los botones */
+    .btn-registrar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-registrar:hover {
+      background-color: #005c89;
+    }
+  </style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-3">
+			</div>
+			<div class="col-6 pregunta">
+				<h3>Cargar Pregunta</h3>
+				<form th:object="${pregunta}" th:action="@{/guardarPregunta}" method="post">
+					<div class="form-group mb-3">
+						<label class="custom-label">idPregunta</label>
+						<input class="form-control" type="number" th:field="*{idPregunta}"><br>
+						
+						<label class="custom-label">Descripcion</label>
+						<input class="form-control" type="text" th:field="*{descripcion}"><br>
+						
+						<label class="custom-label">Opcion 1</label>
+						<input class="form-control" type="text" th:field="*{opcion1}"><br>
+						
+						<label class="custom-label">Opcion 2</label>
+						<input class="form-control" type="text" th:field="*{opcion2}"><br>
+						
+						<label class="custom-label">Opcion 3</label>
+						<input class="form-control" type="text" th:field="*{opcion3}"><br>
+						
+						<label class="custom-label">Opcion 4</label>
+						<input class="form-control" type="text" th:field="*{opcion4}"><br> 
+						
+						 <label class="custom-label">Opción Correcta:</label>
+            				<select th:field="*{opcionCorrecta}" class="form-control">
+                			<option th:value="1">1</option>
+                			<option th:value="2">2</option>
+                			<option th:value="3">3</option>
+                			<option th:value="4">4</option>
+           					 </select><br>
+
+   						 <label class="custom-label">Nivel:</label>
+    						<select th:field="*{nivel}" class="form-control">
+      						<option th:value="facil">Fácil</option>
+      						<option th:value="intermedio">Intermedio</option>
+      						<option th:value="dificil">Difícil</option>
+    						</select>
+    						
+						<label class="custom-label">Puntaje</label>
+						<input class="form-control" type="number" th:field="*{puntaje}"><br>
+						
+						<input class="btn btn-registrar" type="submit" value="CARGAR">
+
+					</div>
+				</form>
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
+	

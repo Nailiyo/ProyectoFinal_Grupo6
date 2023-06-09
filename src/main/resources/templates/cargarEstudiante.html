@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Carga de Estudiante</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: #eaf2f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .estudiante {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0083ca;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .custom-label {
+      font-weight: bold;
+      color: #0083ca;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .checkbox-input {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+    /* Estilos para los botones */
+    .btn-registrar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-registrar:hover {
+      background-color: #005c89;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6 estudiante">
+        <h3>Cargar Estudiante</h3>
+        <form th:object="${estudiante}" th:action="@{/guardarEstudiante}" method="post">
+          <div class="form-group mb-3">
+            <label class="custom-label">idEstudiante</label>
+            <input class="form-control" type="number" th:field="*{idEstudiante}"><br>
+            
+            <label class="custom-label">Nombre</label>
+            <input class="form-control" type="text" th:field="*{nombreEstudiante}"><br>
+            
+            <label class="custom-label">Apellido</label>
+            <input class="form-control" type="text" th:field="*{apellidoEstudiante}"><br>
+            
+            <label class="custom-label">DNI</label>
+            <input class="form-control" type="number" th:field="*{dniEstudiante}"><br>
+            
+            <label class="custom-label">Estado</label>
+            <input class="checkbox-input" type="checkbox" th:field="*{estadoEstudiante}"><br>
+
+            <input class="btn btn-registrar" type="submit" value="REGISTRAR">
+          </div>
+        </form>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</body>
+</html>
