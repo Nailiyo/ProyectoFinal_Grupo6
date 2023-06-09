@@ -75,6 +75,17 @@
       display: block;
       margin-top: 10px;
     }
+     .checkbox-input {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
 
     /* Estilos para los botones */
     .btn-registrar {
@@ -139,6 +150,9 @@
     						
 						<label class="custom-label">Puntaje</label>
 						<input class="form-control" type="number" th:field="*{puntaje}"><br>
+						
+						<label class="custom-label">Estado</label>
+            			<input class="checkbox-input" type="checkbox" th:field="*{estadoPregunta}"><br>
 						
 						<input class="btn btn-registrar" type="submit" value="CARGAR">
 

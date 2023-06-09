@@ -61,23 +61,29 @@
     <table> 
         <tr>
         <td><b> ID </b> </td>
-        <td><b> Pregunta </b> </td>
+        <td><b> Descripcion </b> </td>
         <td><b> Opcion1 </b> </td>
         <td><b> Opcion2 </b> </td>
         <td><b> Opcion3 </b> </td>
         <td><b> Opcion4 </b> </td>
+        <td><b> Opcion Correcta </b> </td>
+        <td><b> Nivel </b> </td>
+        <td><b> Puntaje </b> </td>
         <td><b> Estado </b> </td>
         </tr>
         <tr>
         </tr> 
-         <tr th:each="docente : ${preguntaListado}"> 
-                  <td th:text="${idPregunta}"></td>
-                  <td th:text="${pregunta}"></td>
-                  <td th:text="${opcion1}"></td>
-                  <td th:text="${opcion2}"></td> 
-                  <td th:text="${opcion3}"></td>
-                  <td th:text="${opcion4}"></td>
-                  <td th:boolean="${estadoPregunta}"></td> 
+         <tr th:each="pregunta : ${preguntaListado}"> 
+                  <td th:number="${pregunta.idPregunta}"></td>
+                  <td th:text="${pregunta.descripcion}"></td>
+                  <td th:text="${pregunta.opcion1}"></td>
+                  <td th:text="${pregunta.opcion2}"></td> 
+                  <td th:text="${pregunta.opcion3}"></td>
+                  <td th:text="${pregunta.opcion4}"></td>
+                  <td th:number="${pregunta.opcionCorrecta}"></td>
+                  <td th:text="${pregunta.nivel}"></td>
+                  <td th:number="${pregunta.puntaje}"></td>
+                  <td th:boolean="${pregunta.estadoPregunta}"></td> 
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 
                          <button class="btn btn-primary" type="submit">Borrar</button>
