@@ -1,8 +1,12 @@
 package com.edu.unju.edm.PV2023.model;
 
+
 import org.springframework.stereotype.Component;
 
-import javax.annotation.processing.Generated;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Component
 @Entity
