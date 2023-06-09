@@ -20,16 +20,16 @@ import org.springframework.web.servlet.ModelAndView;
         @Qualifier("serviceDocenteMySQL")
         IDocenteService docenteService;
 
-        @GetMapping("/docentes")
+        @GetMapping("/cargarDocente")
         public ModelAndView cargarDocente() {
-            ModelAndView cargarDocente = new ModelAndView("formDocente");
-            cargarDocente.addObject("cargardocente",elDocente);
+            ModelAndView cargarDocente = new ModelAndView("cargarDocente");
+            cargarDocente.addObject("docente",elDocente);
             return cargarDocente;
         }
 
         @PostMapping("/guardarDocente")
         public ModelAndView guardarDocente(@ModelAttribute("docente") Docente docente) {
-            ModelAndView listarDocentes = new ModelAndView("mostrarDocentes");
+            ModelAndView listarDocentes = new ModelAndView("mostrarDocente");
             G6.warn("mostrando el nuevo docente"+docente.getNombreDocente());
             try{
             docenteService.cargarDocente(docente);

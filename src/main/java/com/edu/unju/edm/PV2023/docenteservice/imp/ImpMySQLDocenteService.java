@@ -15,7 +15,7 @@ import com.edu.unju.edm.PV2023.docenteservice.IDocenteService;
 import com.edu.unju.edm.PV2023.model.Docente;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("serviceDocenteMySQL")
 public class ImpMySQLDocenteService implements IDocenteService{
 
 	@Autowired
@@ -34,7 +34,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	@Override
 	public ArrayList<Docente> listarDocentes() {
 		
-		return (ArrayList<Docente>) docenteRepository.findByEstado(true);
+		return (ArrayList<Docente>) docenteRepository.findByEstadoDocente(true);
 	}
 
 	@Override

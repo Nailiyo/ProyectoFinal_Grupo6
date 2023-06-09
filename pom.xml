@@ -54,11 +54,7 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>			
 		</dependency>
 
-	<!--dependency>
-			<groupId>ar.edu.unju.edm</groupId>
-			<artifactId>Grupo6-TP3-servicebruno1</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency-->
+	
 	</dependencies>
 	<build>
 		<plugins>

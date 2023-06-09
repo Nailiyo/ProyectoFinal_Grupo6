@@ -1,7 +1,5 @@
 package com.edu.unju.edm.PV2023.controller;
 
-import com.edu.unju.edm.PV2023.alumnoservice.IAlumnoService;
-import com.edu.unju.edm.PV2023.model.Alumno;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.edu.unju.edm.PV2023.alumnoservice.IAlumnoService;
+import com.edu.unju.edm.PV2023.model.Alumno;
+
 @Controller
+
 public class alumnoController {
     private static final Log G6 = LogFactory.getLog(alumnoController.class);
     @Autowired
@@ -20,15 +22,15 @@ public class alumnoController {
     @Autowired
     @Qualifier("serviceAlumnoMySQL")
     IAlumnoService servicio;
-    @GetMapping("/alumno")
+    @GetMapping("/cargarAlumno")
     public ModelAndView cargarAlumno(){
-        ModelAndView cargarAlumno = new ModelAndView("formularioAlumno");
-        cargarAlumno.addObject("cargarAlumno", Alumnos);
+        ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante");
+        cargarAlumno.addObject("alumno", Alumnos);
         return cargarAlumno;
     }
-    @PostMapping("guardarAlumno")
+    @PostMapping("/guardarAlumno")
     public ModelAndView guardarAlumno(@ModelAttribute("cargarAlumno")Alumno unAlumno){
-        ModelAndView listarAlumnos = new ModelAndView("mostrarAlumnos");
+        ModelAndView listarAlumnos = new ModelAndView("mostrarEstudiante");
         G6.warn("mostrando alumno"+unAlumno.getNombreAlumno());
         try{
             servicio.cargarAlumno(unAlumno);

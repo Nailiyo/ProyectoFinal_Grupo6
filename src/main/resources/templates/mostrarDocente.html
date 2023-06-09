@@ -72,11 +72,11 @@
         <tr>
         </tr> 
          <tr th:each="docente : ${docenteListado}"> 
-                  <td th:number="${docente.idDocente}"></td>
-                  <td th:number="${docente.dniDocente}"></td>
+                  <td th:text="${docente.idDocente}"></td>
+                  <td th:text="${docente.dniDocente}"></td>
                   <td th:text="${docente.nombreDocente}"></td> 
                   <td th:text="${docente.apellidoDocente}"></td>
-                  <td th:boolean="${docente.estadoDocente}"></td> 
+                  <td th:text="${docente.estadoDocente}"></td> 
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 
                          <button class="btn btn-primary" type="submit">Borrar</button>

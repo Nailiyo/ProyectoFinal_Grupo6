@@ -18,10 +18,10 @@ public class preguntasController {
     @Autowired
     @Qualifier("servicePreguntaMySQL")
     IPreguntasService servicio;
-    @GetMapping("/pregunta")
+    @GetMapping("/cargarPregunta")
     public ModelAndView cargarPregunta(){
-        ModelAndView cargarPregunta = new ModelAndView("formularioPregunta");
-        cargarPregunta.addObject("cargarPregunta", Pregunta);
+        ModelAndView cargarPregunta = new ModelAndView("cargarPregunta");
+        cargarPregunta.addObject("pregunta", Pregunta);
         return cargarPregunta;
     }
     @PostMapping("/guardarPregunta")

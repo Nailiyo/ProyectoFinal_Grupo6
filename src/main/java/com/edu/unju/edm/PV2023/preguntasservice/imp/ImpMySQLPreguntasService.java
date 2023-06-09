@@ -14,7 +14,7 @@ import com.edu.unju.edm.PV2023.preguntasrepository.PreguntasRepository;
 import com.edu.unju.edm.PV2023.preguntasservice.IPreguntasService;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("servicePreguntaMySQL")
 public class ImpMySQLPreguntasService implements IPreguntasService{
 
 	@Autowired

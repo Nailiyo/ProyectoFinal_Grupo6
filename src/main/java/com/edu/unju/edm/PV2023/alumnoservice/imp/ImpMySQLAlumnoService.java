@@ -16,7 +16,7 @@ import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.preguntasservice.IPreguntasService;
 
 @Service
-@Qualifier("servicioEnMySQL")
+@Qualifier("serviceAlumnoMySQL")
 public class ImpMySQLAlumnoService implements IAlumnoService{
 
 	@Autowired
@@ -35,7 +35,7 @@ public class ImpMySQLAlumnoService implements IAlumnoService{
 	@Override
 	public ArrayList<Alumno> listarAlumnos() {
 		
-		return (ArrayList<Alumno>) alumnoRepository.findByEstado(true);
+		return (ArrayList<Alumno>) alumnoRepository.findByEstadoAlumno(true);
 	}
 
 	@Override
@@ -58,10 +58,10 @@ public class ImpMySQLAlumnoService implements IAlumnoService{
 		return null;
 	}
 	@Override
-	public void eliminarAlumno(Integer IdAlumno) {
+	public void eliminarAlumno(Integer unIdAlumno) {
 		//productoRepository.deleteById(unCodigo);
 		Optional<Alumno> auxiliar=Optional.of(new Alumno());
-		auxiliar= alumnoRepository.findById(IdAlumno);
+		auxiliar= alumnoRepository.findById(unIdAlumno);
 		auxiliar.get().setEstadoAlumno(false);
 		alumnoRepository.save(auxiliar.get());
 	}

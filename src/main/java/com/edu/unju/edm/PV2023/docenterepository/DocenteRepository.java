@@ -1,5 +1,6 @@
 package com.edu.unju.edm.PV2023.docenterepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,6 +11,6 @@ import com.edu.unju.edm.PV2023.model.Docente;
 @Repository
 public interface DocenteRepository extends CrudRepository <Docente, Integer>{
 
-	public List<Docente> findByEstado (Boolean estado);
+	public ArrayList<Docente> findByEstadoDocente (Boolean estadoDocente);
 
 }

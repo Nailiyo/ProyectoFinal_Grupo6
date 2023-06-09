@@ -74,16 +74,16 @@
         <tr>
         </tr> 
          <tr th:each="pregunta : ${preguntaListado}"> 
-                  <td th:number="${pregunta.idPregunta}"></td>
+                  <td th:text="${pregunta.idPregunta}"></td>
                   <td th:text="${pregunta.descripcion}"></td>
                   <td th:text="${pregunta.opcion1}"></td>
                   <td th:text="${pregunta.opcion2}"></td> 
                   <td th:text="${pregunta.opcion3}"></td>
                   <td th:text="${pregunta.opcion4}"></td>
-                  <td th:number="${pregunta.opcionCorrecta}"></td>
+                  <td th:text="${pregunta.opcionCorrecta}"></td>
                   <td th:text="${pregunta.nivel}"></td>
-                  <td th:number="${pregunta.puntaje}"></td>
-                  <td th:boolean="${pregunta.estadoPregunta}"></td> 
+                  <td th:text="${pregunta.puntaje}"></td>
+                  <td th:text="${pregunta.estado}"></td> 
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 
                          <button class="btn btn-primary" type="submit">Borrar</button>
