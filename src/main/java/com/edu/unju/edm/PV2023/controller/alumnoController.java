@@ -1,5 +1,6 @@
 package com.edu.unju.edm.PV2023.controller;
 
+import com.edu.unju.edm.PV2023.alumnoservice.IAlumnoService;
 import com.edu.unju.edm.PV2023.model.Alumno;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
