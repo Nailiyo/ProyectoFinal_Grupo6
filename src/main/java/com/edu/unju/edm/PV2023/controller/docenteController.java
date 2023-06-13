@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
         @GetMapping("/cargarDocente")
         public ModelAndView cargarDocente() {
-            ModelAndView cargarDocente = new ModelAndView("cargarDocente");
+            ModelAndView cargarDocente = new ModelAndView("cargarDocente.html");
             cargarDocente.addObject("docente",elDocente);
             return cargarDocente;
         }
