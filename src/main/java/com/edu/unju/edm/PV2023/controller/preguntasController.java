@@ -26,7 +26,7 @@ public class preguntasController {
     }
     @PostMapping("/guardarPregunta")
     public ModelAndView guardarPregunta(@ModelAttribute("cargarPregunta") Preguntas unaPregunta) {
-        ModelAndView guardarEsaPregunta = new ModelAndView("mostarPegunta");
+        ModelAndView guardarEsaPregunta = new ModelAndView("mostrarPregunta");
         try{
             servicio.cargarPreguntas(unaPregunta);
         }catch (Exception e){}
