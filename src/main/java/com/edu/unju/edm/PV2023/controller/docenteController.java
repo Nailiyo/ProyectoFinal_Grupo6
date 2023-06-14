@@ -1,6 +1,8 @@
 package com.edu.unju.edm.PV2023.controller;
-import com.edu.unju.edm.PV2023.docenteservice.IDocenteService;
+
 import com.edu.unju.edm.PV2023.model.Docente;
+import com.edu.unju.edm.PV2023.service.IDocenteService;
+
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

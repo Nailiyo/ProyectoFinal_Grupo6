@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.edu.unju.edm.PV2023.alumnoservice.IAlumnoService;
+
 import com.edu.unju.edm.PV2023.model.Alumno;
+import com.edu.unju.edm.PV2023.service.IAlumnoService;
 
 @Controller
 

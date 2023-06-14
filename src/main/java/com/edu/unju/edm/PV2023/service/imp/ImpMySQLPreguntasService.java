@@ -1,4 +1,4 @@
-package com.edu.unju.edm.PV2023.preguntasservice.imp;
+package com.edu.unju.edm.PV2023.service.imp;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -10,8 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.edu.unju.edm.PV2023.model.Preguntas;
-import com.edu.unju.edm.PV2023.preguntasrepository.PreguntasRepository;
-import com.edu.unju.edm.PV2023.preguntasservice.IPreguntasService;
+import com.edu.unju.edm.PV2023.repository.PreguntasRepository;
+import com.edu.unju.edm.PV2023.service.IPreguntasService;
+
 
 @Service
 @Qualifier("servicePreguntaMySQL")
