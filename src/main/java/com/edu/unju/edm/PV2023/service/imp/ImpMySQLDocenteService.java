@@ -1,4 +1,4 @@
-package com.edu.unju.edm.PV2023.docenteservice.imp;
+package com.edu.unju.edm.PV2023.service.imp;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
-import com.edu.unju.edm.PV2023.docenterepository.DocenteRepository;
-import com.edu.unju.edm.PV2023.docenteservice.IDocenteService;
+
 import com.edu.unju.edm.PV2023.model.Docente;
+import com.edu.unju.edm.PV2023.repository.DocenteRepository;
+import com.edu.unju.edm.PV2023.service.IDocenteService;
 
 @Service
 @Qualifier("serviceDocenteMySQL")

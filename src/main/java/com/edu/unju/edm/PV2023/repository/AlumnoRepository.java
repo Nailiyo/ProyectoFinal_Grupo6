@@ -1,4 +1,4 @@
-package com.edu.unju.edm.PV2023.alumnorepository;
+package com.edu.unju.edm.PV2023.repository;
 
 import java.util.ArrayList;
 import java.util.List;

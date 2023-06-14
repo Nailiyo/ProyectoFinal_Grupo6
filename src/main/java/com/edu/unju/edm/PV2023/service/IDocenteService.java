@@ -1,4 +1,4 @@
-package com.edu.unju.edm.PV2023.docenteservice;
+package com.edu.unju.edm.PV2023.service;
 
 import java.util.ArrayList;
 import java.util.List;

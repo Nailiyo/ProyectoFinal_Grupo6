@@ -1,4 +1,4 @@
-package com.edu.unju.edm.PV2023.alumnoservice.imp;
+package com.edu.unju.edm.PV2023.service.imp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.edu.unju.edm.PV2023.alumnorepository.AlumnoRepository;
-import com.edu.unju.edm.PV2023.alumnoservice.IAlumnoService;
+
 import com.edu.unju.edm.PV2023.model.Alumno;
-import com.edu.unju.edm.PV2023.preguntasservice.IPreguntasService;
+import com.edu.unju.edm.PV2023.repository.AlumnoRepository;
+import com.edu.unju.edm.PV2023.service.IAlumnoService;
+
 
 @Service
 @Qualifier("serviceAlumnoMySQL")

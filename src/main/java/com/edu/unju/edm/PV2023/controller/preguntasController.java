@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.unju.edm.PV2023.model.Preguntas;
-import com.edu.unju.edm.PV2023.preguntasservice.IPreguntasService;
+import com.edu.unju.edm.PV2023.service.IPreguntasService;
+
 
 @Controller
 public class preguntasController {
