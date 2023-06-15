@@ -11,7 +11,42 @@
       margin: 0;
       padding: 0;
     }
+	
+	.header {
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
+    .header-logo {
+      width: 50px;
+      height: auto;
+    }
+    
+    .header-text {
+      font-family: cursive;
+      color: #005c89;
+      font-size: 23px;
+      margin: 0;
+      margin-left: 80px;
+    }
+
+    .header-button {
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-button:hover {
+      background-color: #005c89;
+    }
+    
     .container-fluid {
       display: flex;
       justify-content: center;
@@ -107,6 +142,12 @@
 </head>
 
 <body>
+	<div class="header">
+    <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
+    <h1 class="header-text">Virtual-EDM</h1>
+    <a href="/" class="header-button">Volver al inicio</a>
+  	</div>
+  
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-3">
@@ -115,8 +156,8 @@
 				<h3>Cargar Pregunta</h3>
 				<form th:object="${pregunta}" th:action="@{/guardarPregunta}" method="post">
 					<div class="form-group mb-3">
-						<label class="custom-label">idPregunta</label>
-						<input class="form-control" type="number" th:field="*{idPregunta}"><br>
+						<!--<label class="custom-label">idPregunta</label>
+						<input class="form-control" type="number" th:field="*{idPregunta}"><br>-->
 						
 						<label class="custom-label">Descripcion</label>
 						<input class="form-control" type="text" th:field="*{descripcion}"><br>
@@ -151,8 +192,8 @@
 						<label class="custom-label">Puntaje</label>
 						<input class="form-control" type="number" th:field="*{puntaje}"><br>
 						
-						<label class="custom-label">Estado</label>
-            			<input class="checkbox-input" type="checkbox" th:field="*{estado}"><br>
+						<!--<label class="custom-label">Estado</label>
+            			<input class="checkbox-input" type="checkbox" th:field="*{estado}"><br>-->
 						
 						<input class="btn btn-registrar" type="submit" value="CARGAR">
 
