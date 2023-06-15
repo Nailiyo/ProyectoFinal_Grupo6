@@ -17,15 +17,20 @@ public class Docente {
     private String nombreDocente;
     private String apellidoDocente;
     private Boolean estadoDocente;
+    private String materiaDocente;
+    private String contraseñaDocente;
 
     public Docente(){super();}
-    public Docente(Integer idDocente, Integer dniDocente, String nombreDocente, String apellidoDocente, Boolean estadoDocente){
+    public Docente(Integer idDocente, Integer dniDocente, String nombreDocente, String apellidoDocente, Boolean estadoDocente, String materiaDocente, String contraseñaDocente){
         super();
         this.idDocente = idDocente;
         this.dniDocente = dniDocente;
         this.nombreDocente = nombreDocente;
         this.apellidoDocente = apellidoDocente;
         this.estadoDocente = estadoDocente;
+        this.materiaDocente = materiaDocente;
+        this.contraseñaDocente = contraseñaDocente;
+        
     }
     public Integer getIdDocente() {
         return idDocente;
@@ -61,4 +66,18 @@ public class Docente {
     public void setEstadoDocente(Boolean estadoDocente){
         this.estadoDocente = estadoDocente;
     }
+	public String getMateriaDocente() {
+		return materiaDocente;
+	}
+	public void setMateriaDocente(String materiaDocente) {
+		this.materiaDocente = materiaDocente;
+	}
+	public String getContraseñaDocente() {
+		return contraseñaDocente;
+	}
+	public void setContraseñaDocente(String contraseñaDocente) {
+		this.contraseñaDocente = contraseñaDocente;
+	}
+    
+    
 }

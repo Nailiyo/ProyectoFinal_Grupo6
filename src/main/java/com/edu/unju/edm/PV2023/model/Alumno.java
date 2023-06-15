@@ -18,15 +18,17 @@ public class Alumno {
     private String nombreAlumno;
     private String apellidoAlumno;
     private Boolean estadoAlumno;
+    private String contraseñaAlumno;
 
     public Alumno(){super();}
-    public Alumno(Integer idAlumno, Integer dniAlumno, String nombreAlumno, String apellidoAlumno, Boolean estadoAlumno){
+    public Alumno(Integer idAlumno, Integer dniAlumno, String nombreAlumno, String apellidoAlumno, Boolean estadoAlumno, String contraseñaAlumno){
         super();
         this.idAlumno = idAlumno;
         this.dniAlumno = dniAlumno;
         this.nombreAlumno = nombreAlumno;
         this.apellidoAlumno = apellidoAlumno;
         this.estadoAlumno = estadoAlumno;
+        this.contraseñaAlumno = contraseñaAlumno;
     }
     public Integer getIdAlumno() {
         return idAlumno;
@@ -62,5 +64,11 @@ public class Alumno {
     public void setEstadoAlumno (Boolean estadoAlumno){
         this.estadoAlumno = estadoAlumno;
     }
+	public String getContraseñaAlumno() {
+		return contraseñaAlumno;
+	}
+	public void setContraseñaAlumno(String contraseñaAlumno) {
+		this.contraseñaAlumno = contraseñaAlumno;
+	}
 }
 
