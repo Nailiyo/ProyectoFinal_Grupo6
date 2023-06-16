@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.model.Cuestionario;
 import com.edu.unju.edm.PV2023.repository.CuestionarioRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioService;
+
+
+
 
 @Service
 @Qualifier("serviceCuestionarioMySQL")
@@ -22,7 +24,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	@Override
 	public void cargarCuestionario(Cuestionario unCuestionario) {
 		
-		unCuestionario.setEstadoCuestionario(true);
+		unCuestionario.setEstado(true);
 		cuestionarioRepository.save(unCuestionario);
 		
 	}
@@ -30,7 +32,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	@Override
 	public ArrayList<Cuestionario> listarCuestionarios() {
 		
-		return (ArrayList<Cuestionario>) cuestionarioRepository.findByEstadoCuestionario(true);
+		return (ArrayList<Cuestionario>) cuestionarioRepository.findByEstado(true);
 	}
 
 	@Override
@@ -57,7 +59,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 		//productoRepository.deleteById(unCodigo);
 		Optional<Cuestionario> auxiliar=Optional.of(new Cuestionario());
 		auxiliar= cuestionarioRepository.findById(unIdCuestionario);
-		auxiliar.get().setEstadoCuestionario(false);
+		auxiliar.get().setEstado(false);
 		cuestionarioRepository.save(auxiliar.get());
 	}
 	
