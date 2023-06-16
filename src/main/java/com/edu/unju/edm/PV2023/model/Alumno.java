@@ -20,6 +20,7 @@ public class Alumno {
     private Boolean estadoAlumno;
     private String contraseñaAlumno;
 
+    
     public Alumno(){super();}
     public Alumno(Integer idAlumno, Integer dniAlumno, String nombreAlumno, String apellidoAlumno, Boolean estadoAlumno, String contraseñaAlumno){
         super();

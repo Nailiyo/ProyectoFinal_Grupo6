@@ -19,7 +19,8 @@ public class Docente {
     private Boolean estadoDocente;
     private String materiaDocente;
     private String contraseñaDocente;
-
+    
+    
     public Docente(){super();}
     public Docente(Integer idDocente, Integer dniDocente, String nombreDocente, String apellidoDocente, Boolean estadoDocente, String materiaDocente, String contraseñaDocente){
         super();
