@@ -21,7 +21,7 @@ import com.edu.unju.edm.PV2023.service.ICuestionarioService;
 @Controller
 public class cuestionarioController {
 
-	private static final Log G6 = LogFactory.getLog(docenteController.class);
+	private static final Log G6 = LogFactory.getLog(cuestionarioController.class);
     @Autowired
     Cuestionario elCuestionario;
         @Autowired
