@@ -10,6 +10,6 @@ import com.edu.unju.edm.PV2023.model.Cuestionario;
 @Repository
 public interface CuestionarioRepository extends CrudRepository<Cuestionario, Integer>{
 
-	public ArrayList<Cuestionario> findByEstadoCuestionario (Boolean estadoCuestionario);
+	public ArrayList<Cuestionario> findByEstado (Boolean estado);
 	
 }
