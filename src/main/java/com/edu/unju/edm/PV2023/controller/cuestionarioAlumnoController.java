@@ -49,7 +49,7 @@ public class cuestionarioAlumnoController {
 		}catch(Exception e) {
 			resultadoCuestionarioAlumno.addObject("messageErrorCuestionarioAlumno", e.getMessage());
 		}
-		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.listarCuestionarioAlumno() ); //mostrarTodosCuestionariosAlumnos()
+		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.mostrarTodosCuestionariosAlumnos() );
 		return resultadoCuestionarioAlumno;
 	}
 }
