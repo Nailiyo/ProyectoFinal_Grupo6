@@ -33,7 +33,7 @@ public class cuestionarioController {
         @PostMapping("/guardarCuestionario")
         public ModelAndView guardarCuestionario(@ModelAttribute("cuestionario") Cuestionario cuestionario) {
             ModelAndView listarCuestionarios = new ModelAndView("mostrarCuestionario");
-            G6.warn("mostrando el nuevo Cuestionario"+cuestionario.getNivel());
+            G6.warn("mostrando el nuevo Cuestionario"+cuestionario.getPregunta1());
             try{
             cuestionarioService.cargarCuestionario(cuestionario);
             }catch(Exception e){}

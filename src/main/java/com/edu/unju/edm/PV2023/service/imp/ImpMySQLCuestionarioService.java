@@ -22,7 +22,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	@Override
 	public void cargarCuestionario(Cuestionario unCuestionario) {
 		
-		unCuestionario.setEstadoCuestionario(true);
+		unCuestionario.setEstado(true);
 		cuestionarioRepository.save(unCuestionario);
 		
 	}
@@ -57,7 +57,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 		//productoRepository.deleteById(unCodigo);
 		Optional<Cuestionario> auxiliar=Optional.of(new Cuestionario());
 		auxiliar= cuestionarioRepository.findById(unIdCuestionario);
-		auxiliar.get().setEstadoCuestionario(false);
+		auxiliar.get().setEstado(false);
 		cuestionarioRepository.save(auxiliar.get());
 	}
 	
