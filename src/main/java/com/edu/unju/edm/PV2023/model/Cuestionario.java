@@ -28,8 +28,8 @@ public class Cuestionario {
     @JoinColumn(name="idAlumno")
 	Alumno alumno;
 	
-	private String nivel;
-	private Integer puntaje;
+	private String nivelCuestionario;
+	private Integer puntajeCuestionario;
 	private Integer puntajeTotal;
 	private Date fechaCuestionario;
 	private Boolean estadoCuestionario;
@@ -38,10 +38,10 @@ public class Cuestionario {
 		
 	}
 	
-	public Cuestionario(Integer idCuestionario, String nivel, Integer puntaje, Integer puntajeTotal, Date fechaCuestionario, Boolean estadoCuestionario) {
+	public Cuestionario(Integer idCuestionario, String nivelCuestionario, Integer puntajeCuestionario, Integer puntajeTotal, Date fechaCuestionario, Boolean estadoCuestionario) {
 		this.idCuestionario = idCuestionario;
-		this.nivel = nivel;
-		this.puntaje = puntaje;
+		this.nivelCuestionario = nivelCuestionario;
+		this.puntajeCuestionario = puntajeCuestionario;
 		this.puntajeTotal = puntajeTotal;
 		this.fechaCuestionario = fechaCuestionario;
 		this.estadoCuestionario = estadoCuestionario;
@@ -53,17 +53,17 @@ public class Cuestionario {
 	public void setIdCuestionario(Integer idCuestionario) {
 		this.idCuestionario = idCuestionario;
 	}
-	public String getNivel() {
-		return nivel;
+	public String getNivelCuestionario() {
+		return nivelCuestionario;
 	}
-	public void setNivel(String nivel) {
-		this.nivel = nivel;
+	public void setNivelCuestionario(String nivel) {
+		this.nivelCuestionario = nivel;
 	}
-	public Integer getPuntaje() {
-		return puntaje;
+	public Integer getPuntajeCuestionario() {
+		return puntajeCuestionario;
 	}
-	public void setPuntaje(Integer puntaje) {
-		this.puntaje = puntaje;
+	public void setPuntajeCuestionario(Integer puntaje) {
+		this.puntajeCuestionario = puntaje;
 	}
 	public Integer getPuntajeTotal() {
 		return puntajeTotal;

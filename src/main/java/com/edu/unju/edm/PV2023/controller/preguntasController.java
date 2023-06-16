@@ -1,19 +1,27 @@
 package com.edu.unju.edm.PV2023.controller;
 
+import java.io.IOException;
+
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.unju.edm.PV2023.model.Preguntas;
+
 import com.edu.unju.edm.PV2023.service.IPreguntasService;
 
 
 @Controller
 public class preguntasController {
+private static final Log G6 = LogFactory.getLog(docenteController.class);
     @Autowired
     Preguntas Pregunta;
     @Autowired
@@ -34,4 +42,55 @@ public class preguntasController {
         guardarEsaPregunta.addObject("preguntaGuardada", servicio.listarPreguntas());
         return guardarEsaPregunta;
     }
+    
+    @GetMapping("/eliminarPregunta/{idPregunta}")
+  	@ResponseBody
+  	public ModelAndView borrarPregunta(@PathVariable Integer idPregunta) {
+  		
+  		try {
+  			servicio.eliminarPreguntas(idPregunta);
+  			G6.error("PASANDO...");
+  		} catch (Exception e) {
+  			G6.error("encontrando: producto NO encontrado");
+  		}
+  		ModelAndView listadoPreguntas = new ModelAndView("redirect:/guardarPregunta");
+  		listadoPreguntas.addObject("preguntaListado", servicio.listarPreguntas());
+  		
+  		return listadoPreguntas;
+  		}
+  	
+  	@GetMapping("/modificarPregunta/{idPregunta}")
+  	public ModelAndView getModificarPregunta(@PathVariable(name = "idPregunta")  Integer idPregunta) {
+  		
+  		ModelAndView modelAndView = new ModelAndView("cargarPregunta");
+  		try {
+  			modelAndView.addObject("preguntaListado", servicio.mostrarUnaPregunta(idPregunta));
+  		}catch (Exception e) {
+  			modelAndView.addObject("modificacionDePreguntaErrorMessage", e.getMessage());
+  		}
+  		
+  		//bandera
+  		modelAndView.addObject("band", true);
+  		return modelAndView;
+  	}
+  	
+  	@PostMapping(value="/modificarPregunta")
+  	public ModelAndView modificarPregunta(@ModelAttribute ("cargarPregunta") Preguntas nuevaPregunta) throws IOException {
+  		
+  		ModelAndView listadoFinal= new ModelAndView("mostrarPregunta");
+  		
+  		G6.warn("Mostrando la nueva Pregunta " + nuevaPregunta.getDescripcion());
+  		
+  		try {
+  			
+  			servicio.cargarPreguntas(nuevaPregunta);
+  			
+  		}catch(Exception e) {
+  			listadoFinal.addObject("pasa por aqui", e.getMessage());
+  		}
+  		
+  		listadoFinal.addObject("listado", servicio.listarPreguntas());
+  		
+  		return listadoFinal;
+  	}
 }
