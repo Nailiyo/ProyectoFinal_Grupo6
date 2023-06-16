@@ -58,7 +58,7 @@ public class ImpMySQLPreguntasService implements IPreguntasService{
 	}
 	@Override
 	public void eliminarPreguntas(Integer idPregunta) {
-		//productoRepository.deleteById(unCodigo);
+		//preguntasRepository.deleteById(idPregunta);
 		Optional<Preguntas> auxiliar=Optional.of(new Preguntas());
 		auxiliar= preguntasRepository.findById(idPregunta);
 		auxiliar.get().setEstado(false);

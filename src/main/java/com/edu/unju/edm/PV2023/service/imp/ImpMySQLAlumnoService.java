@@ -60,7 +60,7 @@ public class ImpMySQLAlumnoService implements IAlumnoService{
 	}
 	@Override
 	public void eliminarAlumno(Integer unIdAlumno) {
-		//productoRepository.deleteById(unCodigo);
+		//alumnoRepository.deleteById(unIdAlumno);
 		Optional<Alumno> auxiliar=Optional.of(new Alumno());
 		auxiliar= alumnoRepository.findById(unIdAlumno);
 		auxiliar.get().setEstadoAlumno(false);

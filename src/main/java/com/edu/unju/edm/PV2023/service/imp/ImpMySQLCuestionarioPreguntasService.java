@@ -3,6 +3,7 @@ package com.edu.unju.edm.PV2023.service.imp;
 import com.edu.unju.edm.PV2023.model.CuestionarioPreguntas;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -58,7 +59,7 @@ public class ImpMySQLCuestionarioPreguntasService implements ICuestionarioPregun
 	}
 	@Override
 	public void eliminarCuestionarioPreguntas(Integer unIdCuestionarioPreguntas) {
-		//productoRepository.deleteById(unCodigo);
+		//cuestionarioPreguntasRepository.deleteById(unIdCuestionarioPreguntas);
 		Optional<CuestionarioPreguntas> auxiliar=Optional.of(new CuestionarioPreguntas());
 		auxiliar= cuestionarioPreguntasRepository.findById(unIdCuestionarioPreguntas);
 		//auxiliar.get().setEstadoCuestionarioPreguntas(false);

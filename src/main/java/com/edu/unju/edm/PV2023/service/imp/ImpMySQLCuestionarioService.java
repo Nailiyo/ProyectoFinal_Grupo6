@@ -56,7 +56,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	}
 	@Override
 	public void eliminarCuestionario(Integer unIdCuestionario) {
-		//productoRepository.deleteById(unCodigo);
+		//cuestionarioRepository.deleteById(unIdCuestionario);
 		Optional<Cuestionario> auxiliar=Optional.of(new Cuestionario());
 		auxiliar= cuestionarioRepository.findById(unIdCuestionario);
 		auxiliar.get().setEstado(false);

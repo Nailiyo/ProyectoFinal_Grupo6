@@ -59,7 +59,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	}
 	@Override
 	public void eliminarDocente(Integer unIdDocente) {
-		//productoRepository.deleteById(unCodigo);
+		//docenteRepository.deleteById(unIdDocente);
 		Optional<Docente> auxiliar=Optional.of(new Docente());
 		auxiliar= docenteRepository.findById(unIdDocente);
 		auxiliar.get().setEstadoDocente(false);
