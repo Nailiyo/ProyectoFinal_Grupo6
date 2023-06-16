@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Resolver Cuestionario</title>
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-3">
+			</div>
+			<div class="col-6 cuestionarioAlumno">
+				<h3>Crear Cuestionario</h3>
+				<form th:object="${cuestionarioAlumno}" th:action="@{/guardarcuestionarioAlumno}" method="post">
+					
+					<div class="form-group mb-3">
+						
+						<label class="custom-label">Alumno</label>
+						<select class="form-control" th:field="*{alumno.idAlumno}">
+						<option th:each="alumno:${alumnoListado}" th:value="${alumno.idAlumno}" th:text="${alumno.nombreAlumno}"></option>
+						</select>
+						<br>
+						
+						<label class="custom-label">Cuestionario</label>
+						<select class="form-control" th:field="*{cuestionario.idCuestionario}">
+						<option th:each="cuestionario:${cuestionarioListado}" th:value="${cuestionario.idCuestionario}" th:text="${cuestionario.idCuestionario}"></option>
+						</select>
+						<br>
+						
+	</div>
+	</form>
+	</div>
+	</div>					
+</div>
+
+</body>
+</html>
