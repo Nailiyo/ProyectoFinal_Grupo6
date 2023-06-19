@@ -1,6 +1,6 @@
 package com.edu.unju.edm.PV2023.controller;
 
-import com.edu.unju.edm.PV2023.model.Alumno;
+
 import com.edu.unju.edm.PV2023.model.Docente;
 import com.edu.unju.edm.PV2023.service.IDocenteService;
 
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
     public class docenteController {
     private static final Log G6 = LogFactory.getLog(docenteController.class);
     @Autowired
-    Docente elDocente;
+    Docente unDocente;
         @Autowired
         @Qualifier("serviceDocenteMySQL")
         IDocenteService docenteService;
@@ -30,16 +30,16 @@ import org.springframework.web.servlet.ModelAndView;
         @GetMapping("/cargarDocente")
         public ModelAndView cargarDocente() {
             ModelAndView cargarDocente = new ModelAndView("cargarDocente.html");
-            cargarDocente.addObject("docente",elDocente);
+            cargarDocente.addObject("docente",unDocente);
             return cargarDocente;
         }
 
         @PostMapping("/guardarDocente")
-        public ModelAndView guardarDocente(@ModelAttribute("docente") Docente docente) {
+        public ModelAndView guardarDocente(@ModelAttribute("docente") Docente unDocenteConDatos) {
             ModelAndView listarDocentes = new ModelAndView("mostrarDocente");
-            G6.warn("mostrando el nuevo docente"+docente.getNombreDocente());
+            G6.warn("mostrando el nuevo docente"+unDocenteConDatos.getNombreDocente());
             try{
-            docenteService.cargarDocente(docente);
+            docenteService.cargarDocente(unDocenteConDatos);
             }catch(Exception e){}
             listarDocentes.addObject("docenteListado",docenteService.listarDocentes());
             return listarDocentes;
@@ -67,7 +67,7 @@ import org.springframework.web.servlet.ModelAndView;
     		
     		ModelAndView modelAndView = new ModelAndView("cargarDocente");
     		try {
-    			modelAndView.addObject("docenteListado", docenteService.mostrarUnDocente(idDocente));
+    			modelAndView.addObject("docenteListado", docenteService.mostrarDocente(idDocente));
     		}catch (Exception e) {
     			modelAndView.addObject("modificacionDeDocenteErrorMessage", e.getMessage());
     		}

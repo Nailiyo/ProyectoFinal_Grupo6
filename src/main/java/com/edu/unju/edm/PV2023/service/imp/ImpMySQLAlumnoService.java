@@ -1,7 +1,6 @@
 package com.edu.unju.edm.PV2023.service.imp;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.apache.juli.logging.Log;
@@ -40,7 +39,7 @@ public class ImpMySQLAlumnoService implements IAlumnoService{
 	}
 
 	@Override
-	public Alumno mostrarUnAlumno(Integer idAlumno) {
+	public Alumno mostrarAlumno(Integer idAlumno) {
 		// TODO Auto-generated method stub
 		Optional<Alumno> auxiliar = Optional.of(new Alumno());
 		auxiliar = alumnoRepository.findById(idAlumno);
@@ -54,7 +53,7 @@ public class ImpMySQLAlumnoService implements IAlumnoService{
 	}
 
 	@Override
-	public Alumno modificarUnAlumno(Integer idAlumno) {
+	public Alumno modificarAlumno(Integer idAlumno) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -13,8 +13,8 @@ public interface ICuestionarioService {
 	public void cargarCuestionario(Cuestionario unCuestionario);
 	public void eliminarCuestionario(Integer unIdCuestionario);
 	public ArrayList<Cuestionario> listarCuestionarios();
-	public Cuestionario mostrarUnCuestionario(Integer idCuestionario);
+	public Cuestionario mostrarCuestionario(Integer idCuestionario);
 	public void eliminarTodosLosCuestionarios();
-	public Cuestionario modificarUnCuestionario(Integer idCuestionario);
+	public Cuestionario modificarCuestionario(Integer idCuestionario);
 	
 }

@@ -28,24 +28,24 @@ import com.edu.unju.edm.PV2023.service.IAlumnoService;
 public class alumnoController {
     private static final Log G6 = LogFactory.getLog(alumnoController.class);
     @Autowired
-    Alumno Alumnos;
+    Alumno unAlumno;
     @Autowired
     @Qualifier("serviceAlumnoMySQL")
-    IAlumnoService servicio;
+    IAlumnoService alumnoService;
     @GetMapping("/cargarAlumno")
     public ModelAndView cargarAlumno(){
-        ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante");
-        cargarAlumno.addObject("alumno", Alumnos);
+        ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante.html");
+        cargarAlumno.addObject("alumno", unAlumno);
         return cargarAlumno;
     }
     @PostMapping("/guardarAlumno")
-    public ModelAndView guardarAlumno(@ModelAttribute("cargarAlumno")Alumno unAlumno){
+    public ModelAndView guardarAlumno(@ModelAttribute("alumno")Alumno unAlumnoConDatos){
         ModelAndView listarAlumnos = new ModelAndView("mostrarEstudiante");
-        G6.warn("mostrando alumno"+unAlumno.getNombreAlumno());
+        G6.warn("mostrando alumno"+unAlumnoConDatos.getNombreAlumno());
         try{
-            servicio.cargarAlumno(unAlumno);
+            alumnoService.cargarAlumno(unAlumnoConDatos);
         }catch(Exception e){}
-        listarAlumnos.addObject("alumnoListado",servicio.listarAlumnos());
+        listarAlumnos.addObject("alumnoListado",alumnoService.listarAlumnos());
         return listarAlumnos;
     }
     
@@ -54,13 +54,13 @@ public class alumnoController {
 	public ModelAndView borrarAlumno(@PathVariable Integer idAlumno) {
 		
 		try {
-			servicio.eliminarAlumno(idAlumno);
+			alumnoService.eliminarAlumno(idAlumno);
 			G6.error("PASANDO...");
 		} catch (Exception e) {
 			G6.error("encontrando: producto NO encontrado");
 		}
 		ModelAndView listadoAlumno = new ModelAndView("redirect:/guardarAlumno");
-		listadoAlumno.addObject("alumnoListado", servicio.listarAlumnos());
+		listadoAlumno.addObject("alumnoListado", alumnoService.listarAlumnos());
 		
 		return listadoAlumno;
 		}
@@ -70,7 +70,7 @@ public class alumnoController {
 		
 		ModelAndView modelAndView = new ModelAndView("cargarEstudiante");
 		try {
-			modelAndView.addObject("alumnoListado", servicio.mostrarUnAlumno(idAlumno));
+			modelAndView.addObject("alumnoListado", alumnoService.mostrarAlumno(idAlumno));
 		}catch (Exception e) {
 			modelAndView.addObject("modificacionDeAlumnoErrorMessage", e.getMessage());
 		}
@@ -89,13 +89,13 @@ public class alumnoController {
 		
 		try {
 			
-			servicio.cargarAlumno(nuevoAlumno);
+			alumnoService.cargarAlumno(nuevoAlumno);
 			
 		}catch(Exception e) {
 			listadoFinal.addObject("pasa por aqui", e.getMessage());
 		}
 		
-		listadoFinal.addObject("listado", servicio.listarAlumnos());
+		listadoFinal.addObject("listadoAlumno", alumnoService.listarAlumnos());
 		
 		return listadoFinal;
 	}

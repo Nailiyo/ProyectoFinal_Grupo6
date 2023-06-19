@@ -14,8 +14,8 @@ public interface IDocenteService {
 	public void cargarDocente(Docente unDocente);
 	public void eliminarDocente(Integer unIdDocente);
 	public ArrayList<Docente> listarDocentes();
-	public Docente mostrarUnDocente(Integer idDocente);
+	public Docente mostrarDocente(Integer idDocente);
 	public void eliminarTodosLosDocentes();
-	public Docente modificarUnDocente(Integer idDocente);
+	public Docente modificarDocente(Integer idDocente);
 	
 }

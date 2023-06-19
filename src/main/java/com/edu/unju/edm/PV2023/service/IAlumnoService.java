@@ -13,8 +13,8 @@ public interface IAlumnoService {
 	public void cargarAlumno(Alumno unAlumno);
 	public void eliminarAlumno(Integer unIdAlumno);
 	public ArrayList<Alumno> listarAlumnos();
-	public Alumno mostrarUnAlumno(Integer idAlumno);
+	public Alumno mostrarAlumno(Integer idAlumno);
 	public void eliminarTodosLosAlumnos();
-	public Alumno modificarUnAlumno(Integer idAlumno);
+	public Alumno modificarAlumno(Integer idAlumno);
 	
 }

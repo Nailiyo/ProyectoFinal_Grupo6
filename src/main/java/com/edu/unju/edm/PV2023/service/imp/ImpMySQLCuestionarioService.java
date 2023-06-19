@@ -24,7 +24,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	@Override
 	public void cargarCuestionario(Cuestionario unCuestionario) {
 		
-		unCuestionario.setEstado(true);
+		unCuestionario.setEstadoCuestionario(true);
 		cuestionarioRepository.save(unCuestionario);
 		
 	}
@@ -32,11 +32,11 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	@Override
 	public ArrayList<Cuestionario> listarCuestionarios() {
 		
-		return (ArrayList<Cuestionario>) cuestionarioRepository.findByEstado(true);
+		return (ArrayList<Cuestionario>) cuestionarioRepository.findByEstadoCuestionario(true);
 	}
 
 	@Override
-	public Cuestionario mostrarUnCuestionario(Integer idCuestionario) {
+	public Cuestionario mostrarCuestionario(Integer idCuestionario) {
 		// TODO Auto-generated method stub
 		Optional<Cuestionario> auxiliar = Optional.of(new Cuestionario());
 		auxiliar = cuestionarioRepository.findById(idCuestionario);
@@ -50,7 +50,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 	}
 
 	@Override
-	public Cuestionario modificarUnCuestionario(Integer idCuestionario) {
+	public Cuestionario modificarCuestionario(Integer idCuestionario) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -59,7 +59,7 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 		//cuestionarioRepository.deleteById(unIdCuestionario);
 		Optional<Cuestionario> auxiliar=Optional.of(new Cuestionario());
 		auxiliar= cuestionarioRepository.findById(unIdCuestionario);
-		auxiliar.get().setEstado(false);
+		auxiliar.get().setEstadoCuestionario(false);
 		cuestionarioRepository.save(auxiliar.get());
 	}
 	

@@ -44,36 +44,36 @@ public class Docente {
         this.materiaDocente = materiaDocente;
         this.contraseñaDocente = contraseñaDocente;
     }
-    public Integer getIdDocente() {
-        return idDocente;
-    }
-    public void setIdDocente(Integer idDocente) {
-        this.idDocente = idDocente;
-    }
-    public Integer getDniDocente() {
-        return dniDocente;
-    }
-    public void setDniDocente(Integer dniDocente) {
-        this.dniDocente = dniDocente;
-    }
-    public String getNombreDocente(){
-        return nombreDocente;
-    }
-    public void setNombreDocente(String nombreDocente){
-        this.nombreDocente = nombreDocente;
-    }
-    public String getApellidoDocente(){
-        return apellidoDocente;
-    }
-    public void setApellidoDocente(String apellidoDocente){
-        this.apellidoDocente = apellidoDocente;
-    }
-    public Boolean getEstadoDocente() {
-        return estadoDocente;
-    }
-    public void setEstadoDocente(Boolean estadoDocente){
-        this.estadoDocente = estadoDocente;
-    }
+	public Integer getIdDocente() {
+		return idDocente;
+	}
+	public void setIdDocente(Integer idDocente) {
+		this.idDocente = idDocente;
+	}
+	public Integer getDniDocente() {
+		return dniDocente;
+	}
+	public void setDniDocente(Integer dniDocente) {
+		this.dniDocente = dniDocente;
+	}
+	public String getNombreDocente() {
+		return nombreDocente;
+	}
+	public void setNombreDocente(String nombreDocente) {
+		this.nombreDocente = nombreDocente;
+	}
+	public String getApellidoDocente() {
+		return apellidoDocente;
+	}
+	public void setApellidoDocente(String apellidoDocente) {
+		this.apellidoDocente = apellidoDocente;
+	}
+	public Boolean getEstadoDocente() {
+		return estadoDocente;
+	}
+	public void setEstadoDocente(Boolean estadoDocente) {
+		this.estadoDocente = estadoDocente;
+	}
 	public String getMateriaDocente() {
 		return materiaDocente;
 	}
@@ -86,10 +86,12 @@ public class Docente {
 	public void setContraseñaDocente(String contraseñaDocente) {
 		this.contraseñaDocente = contraseñaDocente;
 	}
-    public String getemailDocente() {
-        return emailDocente;
-    }    
-    public void setemailDocente(String emailDocente) {
-        this.emailDocente = emailDocente;
-    }
+	public String getEmailDocente() {
+		return emailDocente;
+	}
+	public void setEmailDocente(String emailDocente) {
+		this.emailDocente = emailDocente;
+	}
+    
+  
 }

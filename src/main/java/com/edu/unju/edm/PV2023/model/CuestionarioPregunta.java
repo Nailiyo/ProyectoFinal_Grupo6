@@ -10,33 +10,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Entity
 @Component
-public class CuestionarioPreguntas {
+@Entity
+public class CuestionarioPregunta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idCuestionarioPreguntas;
+	private Integer idCuestionarioPregunta;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPregunta")
-	Preguntas preguntas;
+	Pregunta pregunta;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idCuestionario")
 	Cuestionario cuestionario;
 
-	public CuestionarioPreguntas(){}
-	public CuestionarioPreguntas(Preguntas preguntas, Cuestionario cuestionario) {
+	public CuestionarioPregunta(){}
+	public CuestionarioPregunta(Pregunta pregunta, Cuestionario cuestionario) {
         super();
-        this.preguntas = preguntas;
+        this.pregunta = pregunta;
         this.cuestionario = cuestionario;
     }	
-	public Integer getIdCuestionarioPreguntas() {
-		return idCuestionarioPreguntas;
+	public Integer getIdCuestionarioPregunta() {
+		return idCuestionarioPregunta;
 	}
-	public void setIdCuestionarioPreguntas(Integer idCuestionarioPreguntas) {
-		this.idCuestionarioPreguntas = idCuestionarioPreguntas;
+	public void setIdCuestionarioPregunta(Integer idCuestionarioPregunta) {
+		this.idCuestionarioPregunta = idCuestionarioPregunta;
 	}
 	public Cuestionario getCuestionario() {
 		return cuestionario;
@@ -44,10 +44,11 @@ public class CuestionarioPreguntas {
 	public void setCuestionario(Cuestionario cuestionario) {
 		this.cuestionario = cuestionario;
 	}
-	public Preguntas getPreguntas() {
-		return preguntas;
+	public Pregunta getPregunta() {
+		return pregunta;
 	}
-	public void setPregunta(Preguntas preguntas) {
-		this.preguntas = preguntas;
-	}	
+	public void setPregunta(Pregunta pregunta) {
+		this.pregunta = pregunta;
+	}	 	
+	
 }

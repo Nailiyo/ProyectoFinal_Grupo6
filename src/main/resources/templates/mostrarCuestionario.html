@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Mostrar Preguntas</title>
+    <meta charset="utf-8">
+    <title>Mostrar Estudiantes</title>
      <link href="css/styles.css" rel="stylesheet" type="text/css">
-<style>
+    <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -91,40 +92,33 @@
       }
     </style>
 </head>
+
 <body>
 	<div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   	</div>
-    <h1>Mostrar Preguntas</h1>
+    <h1>Mostrar Cuestionario Lindo</h1>
 
-    <table> 
+     <table> 
         <tr>
-        <td><b> ID </b> </td>
-        <td><b> Descripcion </b> </td>
-        <td><b> Opcion1 </b> </td>
-        <td><b> Opcion2 </b> </td>
-        <td><b> Opcion3 </b> </td>
-        <td><b> Opcion4 </b> </td>
-        <td><b> Opcion Correcta </b> </td>
-        <td><b> Nivel </b> </td>
-        <td><b> Puntaje </b> </td>
-        <td><b> Estado </b> </td>
+        <td><b> Pregunta 1 </b> </td>
+        <td><b> Pregunta 2 </b> </td>
+        <td><b> Pregunta 3 </b> </td>
+        <td><b> Pregunta 4 </b> </td>
+        <td><b> Pregunta 5 </b> </td>
+        <td><b> Profesor </b> </td>
         </tr>
         <tr>
         </tr> 
-         <tr th:each="pregunta : ${preguntaListado}"> 
-                  <td th:text="${pregunta.idPregunta}"></td>
-                  <td th:text="${pregunta.descripcion}"></td>
-                  <td th:text="${pregunta.opcion1}"></td>
-                  <td th:text="${pregunta.opcion2}"></td> 
-                  <td th:text="${pregunta.opcion3}"></td>
-                  <td th:text="${pregunta.opcion4}"></td>
-                  <td th:text="${pregunta.opcionCorrecta}"></td>
-                  <td th:text="${pregunta.nivelPregunta}"></td>
-                  <td th:text="${pregunta.puntaje}"></td>
-                  <td th:text="${pregunta.estadoPregunta}"></td> 
+         <tr th:each="cuestionario : ${cuestionarioListado}"> 
+                  <td th:text="${cuestionario.pregunta1}"></td>
+                  <td th:text="${cuestionario.pregunta2}"></td>
+                  <td th:text="${cuestionario.pregunta3}"></td> 
+                  <td th:text="${cuestionario.pregunta4}"></td>
+                  <td th:text="${cuestionario.pregunta5}"></td> 
+                  <td th:text="${cuestionario.unDocente}"></td> 
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 
                          <button class="btn btn-primary" type="submit">Borrar</button>
@@ -134,7 +128,7 @@
 <footer>
   <div class="footer-container">
     <div class="footer-row">
-      <div class="footer-column">
+      <div class="footer-column"><br><br>
         <h3>Virtual EDM</h3>
         <p>Un lugar para aprender y crecer juntos</p>
       </div>

@@ -39,9 +39,9 @@ public class cuestionarioAlumnoController {
 	@PostMapping("/guardarAlumnoCuestionarioHecho")
 	public ModelAndView guardarCuestionarioAlumno (@Valid @ModelAttribute("cuestionarioAlumno") CuestionarioAlumno finalizado, BindingResult totalResult) {
 		if(totalResult.hasErrors()) {
-			ModelAndView cargarCuestionarioAlumno = new ModelAndView("listarCuestionarioAlumno");
-			cargarCuestionarioAlumno.addObject("uncuestionarioAlumno", finalizado);
-			return cargarCuestionarioAlumno;
+			ModelAndView cargarCuesAlumno = new ModelAndView("listarCuestionarioAlumno");
+			cargarCuesAlumno.addObject("uncuestionarioAlumno", finalizado);
+			return cargarCuesAlumno;
 		}
 		ModelAndView resultadoCuestionarioAlumno = new ModelAndView("mostrarCuestionarioAlumno");
 		try {
@@ -49,7 +49,7 @@ public class cuestionarioAlumnoController {
 		}catch(Exception e) {
 			resultadoCuestionarioAlumno.addObject("messageErrorCuestionarioAlumno", e.getMessage());
 		}
-		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.mostrarTodosCuestionariosAlumnos() );
+		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.listarCuestionarioAlumno() );
 		return resultadoCuestionarioAlumno;
 	}
 }

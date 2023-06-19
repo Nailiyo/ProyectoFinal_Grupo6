@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 
 @Component
 @Entity
-public class Preguntas {
+public class Pregunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPregunta;
@@ -20,11 +20,11 @@ public class Preguntas {
     private String opcion4;
     private Integer opcionCorrecta;
     private Integer puntaje;
-    private Boolean estado;
-    private String nivel;
-    public Preguntas(){}
-    public Preguntas(Integer idPregunta,Integer puntaje,String nivel, String descripcion, String opcion1,
-                     String opcion2, String opcion3, String opcion4, Integer opcionCorrecta, Boolean estado){
+    private Boolean estadoPregunta;
+    private String nivelPregunta;
+    public Pregunta(){}
+    public Pregunta(Integer idPregunta,Integer puntaje,String nivelPregunta, String descripcion, String opcion1,
+                     String opcion2, String opcion3, String opcion4, Integer opcionCorrecta, Boolean estadoPregunta){
         this.idPregunta = idPregunta;
         this.descripcion = descripcion;
         this.opcion1 = opcion1;
@@ -32,17 +32,17 @@ public class Preguntas {
         this.opcion3 = opcion3;
         this.opcion4 = opcion4;
         this.opcionCorrecta = opcionCorrecta;
-        this.estado = estado;
+        this.estadoPregunta = estadoPregunta;
         this.puntaje = puntaje;
-        this.nivel = nivel;
+        this.nivelPregunta = nivelPregunta;
     }
 
-    public String getNivel() {
-        return nivel;
+    public String getNivelPregunta() {
+        return nivelPregunta;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setNivelPregunta(String nivelPregunta) {
+        this.nivelPregunta = nivelPregunta;
     }
 
     public Integer getIdPregunta() {
@@ -101,8 +101,8 @@ public class Preguntas {
         this.opcionCorrecta = opcionCorrecta;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getEstadoPregunta() {
+        return estadoPregunta;
     }
 
     public Integer getPuntaje() {
@@ -112,8 +112,8 @@ public class Preguntas {
         this.puntaje = puntaje;
     }
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setEstadoPregunta(Boolean estadoPregunta) {
+        this.estadoPregunta = estadoPregunta;
     }
 
 }

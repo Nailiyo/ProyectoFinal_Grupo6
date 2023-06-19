@@ -39,7 +39,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	}
 
 	@Override
-	public Docente mostrarUnDocente(Integer idDocente) {
+	public Docente mostrarDocente(Integer idDocente) {
 		// TODO Auto-generated method stub
 		Optional<Docente> auxiliar = Optional.of(new Docente());
 		auxiliar = docenteRepository.findById(idDocente);
@@ -53,7 +53,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	}
 
 	@Override
-	public Docente modificarUnDocente(Integer idDocente) {
+	public Docente modificarDocente(Integer idDocente) {
 		// TODO Auto-generated method stub
 		return null;
 	}
