@@ -1,5 +1,7 @@
 package com.edu.unju.edm.PV2023.controller;
 
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,7 @@ import jakarta.validation.Valid;
 
 @Controller
 public class cuestionarioAlumnoController {
+	private static final Log G6 = LogFactory.getLog(cuestionarioAlumnoController.class);
 	
 	@Autowired
 	ICuestionarioAlumnoService cuestionarioAlumnoService;
@@ -25,31 +28,34 @@ public class cuestionarioAlumnoController {
 	@Autowired
 	ICuestionarioService cuestionarioService;
 	@Autowired
-	CuestionarioAlumno CuestionarioAlumno;
+	CuestionarioAlumno unCuestionarioAlumno;
 	
 	@GetMapping("/hacerAlumnoCuestionario")
 	public ModelAndView cargarCuestionarioAlumno () {
 		ModelAndView cuestionariosAlumno = new ModelAndView("cuestionarioAlumno");
+		cuestionariosAlumno.addObject("cuesAlumno", unCuestionarioAlumno);
 		cuestionariosAlumno.addObject("cuestionario", cuestionarioService.listarCuestionarios());
 		cuestionariosAlumno.addObject("alumno", alumnoService.listarAlumnos());
-		cuestionariosAlumno.addObject("cuestionarioAlumno", CuestionarioAlumno);
 		return cuestionariosAlumno;
 	}
 	
-	@PostMapping("/guardarAlumnoCuestionarioHecho")
-	public ModelAndView guardarCuestionarioAlumno (@Valid @ModelAttribute("cuestionarioAlumno") CuestionarioAlumno finalizado, BindingResult totalResult) {
-		if(totalResult.hasErrors()) {
-			ModelAndView cargarCuesAlumno = new ModelAndView("listarCuestionarioAlumno");
-			cargarCuesAlumno.addObject("uncuestionarioAlumno", finalizado);
-			return cargarCuesAlumno;
+	@PostMapping("/guardarCuestionarioAlumno")
+	public ModelAndView guardarCuestionarioAlumno (@Valid @ModelAttribute("cuesAlumno") CuestionarioAlumno unCuestionarioAlumnoConDatos, BindingResult resultado) {
+		if(resultado.hasErrors()) {
+			G6.error(resultado.getAllErrors());
+			ModelAndView cuestionariosAlumno = new ModelAndView("cuestionarioAlumno");
+			cuestionariosAlumno.addObject("cuesAlumno", unCuestionarioAlumnoConDatos);
+			cuestionariosAlumno.addObject("cuestionarioListado", cuestionarioService.listarCuestionarios());
+			cuestionariosAlumno.addObject("alumnoListado", alumnoService.listarAlumnos());
+			return cuestionariosAlumno;
 		}
 		ModelAndView resultadoCuestionarioAlumno = new ModelAndView("mostrarCuestionarioAlumno");
 		try {
-			cuestionarioAlumnoService.cargarCuestionarioAlumno(finalizado);
+			cuestionarioAlumnoService.cargarCuestionarioAlumno(unCuestionarioAlumnoConDatos);
 		}catch(Exception e) {
 			resultadoCuestionarioAlumno.addObject("messageErrorCuestionarioAlumno", e.getMessage());
 		}
-		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.listarCuestionarioAlumno() );
+		resultadoCuestionarioAlumno.addObject("todosCuestionariosAlumnos", cuestionarioAlumnoService.listarCuestionarioAlumnos() );
 		return resultadoCuestionarioAlumno;
 	}
 }

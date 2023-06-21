@@ -27,11 +27,13 @@ public class CuestionarioPregunta {
 	Cuestionario cuestionario;
 
 	public CuestionarioPregunta(){}
-	public CuestionarioPregunta(Pregunta pregunta, Cuestionario cuestionario) {
+	public CuestionarioPregunta(Pregunta pregunta, Cuestionario cuestionario, Integer idCuestionarioPregunta) {
         super();
+        this.idCuestionarioPregunta = idCuestionarioPregunta;
         this.pregunta = pregunta;
         this.cuestionario = cuestionario;
     }	
+	
 	public Integer getIdCuestionarioPregunta() {
 		return idCuestionarioPregunta;
 	}

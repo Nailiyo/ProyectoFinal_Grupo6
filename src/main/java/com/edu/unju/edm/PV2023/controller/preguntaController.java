@@ -7,6 +7,7 @@ import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ import com.edu.unju.edm.PV2023.service.IPreguntaService;
 
 @Controller
 public class preguntaController {
-private static final Log G6 = LogFactory.getLog(docenteController.class);
+private static final Log G6 = LogFactory.getLog(preguntaController.class);
     @Autowired
     Pregunta unaPregunta;
     @Autowired
@@ -34,8 +35,15 @@ private static final Log G6 = LogFactory.getLog(docenteController.class);
         return cargarPregunta;
     }
     @PostMapping("/guardarPregunta")
-    public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta unaPreguntaConDatos) {
-        ModelAndView guardarEsaPregunta = new ModelAndView("mostrarPregunta");
+    public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta unaPreguntaConDatos, BindingResult resultado) {
+        if(resultado.hasErrors()) {
+        	G6.error(resultado.getAllErrors());
+            ModelAndView cargarPregunta = new ModelAndView("cargarPregunta");
+            cargarPregunta.addObject("pregunta", unaPreguntaConDatos);
+            return cargarPregunta;
+        }
+        
+    	ModelAndView guardarEsaPregunta = new ModelAndView("mostrarPregunta");
         try{
             preguntaService.cargarPregunta(unaPreguntaConDatos);
         }catch (Exception e){}

@@ -107,6 +107,7 @@
         <td><b> DNI </b> </td>
         <td><b> Nombre </b> </td>
         <td><b> Apellido </b> </td>
+        <td><b> EMAIL </b> </td>
         <td><b> Estado </b> </td>
         </tr>
         <tr>
@@ -116,6 +117,7 @@
                   <td th:text="${alumno.dniAlumno}"></td>
                   <td th:text="${alumno.nombreAlumno}"></td> 
                   <td th:text="${alumno.apellidoAlumno}"></td>
+				  <td th:text="${alumno.emailAlumno}"></td>
                   <td th:text="${alumno.estadoAlumno}"></td> 
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 

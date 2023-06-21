@@ -17,19 +17,29 @@ public class Docente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDocente;
+    
     @NotNull(message="se necesita: dniDocente")
     private Integer dniDocente;
+    
     @NotBlank(message="se necesita: nombreDocente")
     @Size(min=3, max = 20)
     private String nombreDocente;
+    
     @NotBlank(message="se necesita: apellidoDocente")
     @Size(min=3, max = 20)
     private String apellidoDocente;
+    
     private Boolean estadoDocente;
+    
     @NotBlank(message="se necesita: materiaDocente")
     private String materiaDocente;
+    
+    @Size(min=3, max=20, message=" entre 4 o 20 numeros")
     @NotNull(message="se necesita: contraseñaDocente")
+    @Size (min=3, max=20)
     private String contraseñaDocente;
+    
+    @NotBlank(message="se necesita: emailDocente")
     @Email
     private String emailDocente;
     public Docente(){super();}

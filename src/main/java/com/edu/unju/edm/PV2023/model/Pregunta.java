@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Component
 @Entity
@@ -13,14 +16,34 @@ public class Pregunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPregunta;
+    
+    @NotBlank(message="se necesita: descripcion")
+    @Size(min=5, max=20, message="INGRESA PREGUNTA LOCO")
     private String descripcion;
+    
+    @NotBlank(message="COLOCA OPCION 1")
+    @Size(min=5, max=20)
     private String opcion1;
+    
+    @NotBlank(message="COLOCA OPCION 2")
+    @Size(min=5, max=20)
     private String opcion2;
+    
+    @NotBlank(message="COLOCA OPCION 3")
+    @Size(min=5, max=20)
     private String opcion3;
+    
+    @NotBlank(message="COLOCA OPCION 4")
+    @Size(min=5, max=20)
     private String opcion4;
+    
     private Integer opcionCorrecta;
+    
+    @NotNull(message="CUANTO PUNTOS VALE")
     private Integer puntaje;
+    
     private Boolean estadoPregunta;
+    
     private String nivelPregunta;
     public Pregunta(){}
     public Pregunta(Integer idPregunta,Integer puntaje,String nivelPregunta, String descripcion, String opcion1,

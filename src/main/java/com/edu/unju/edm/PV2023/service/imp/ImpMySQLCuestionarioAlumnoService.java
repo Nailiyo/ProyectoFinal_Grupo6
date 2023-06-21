@@ -15,29 +15,29 @@ import com.edu.unju.edm.PV2023.repository.CuestionarioAlumnoRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioAlumnoService;
 
 @Service
-@Qualifier("serviceCuestionarioAlumnoMySQL")
+//@Qualifier("serviceCuestionarioAlumnoMySQL")
 public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoService {
 
 	@Autowired
 	CuestionarioAlumnoRepository cuestionarioAlumnoRepository;
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLDocenteService.class);
+	private static final Log G6 = LogFactory.getLog(ImpMySQLCuestionarioAlumnoService.class);
 	
 	@Override
 	public void cargarCuestionarioAlumno(CuestionarioAlumno unCuestionarioAlumno) {
 		
-		unCuestionarioAlumno.setEstado(true);
+		unCuestionarioAlumno.setEstadoCuestionarioAlumno(true);
 		cuestionarioAlumnoRepository.save(unCuestionarioAlumno);
 		
 	}
 
 	@Override
-	public ArrayList<CuestionarioAlumno> listarCuestionarioAlumno() {
+	public ArrayList<CuestionarioAlumno> listarCuestionarioAlumnos() {
 		
-		return (ArrayList<CuestionarioAlumno>) cuestionarioAlumnoRepository.findByEstado(true);
+		return (ArrayList<CuestionarioAlumno>) cuestionarioAlumnoRepository.findByEstadoCuestionarioAlumno(true);
 	}
 
 	@Override
-	public CuestionarioAlumno mostrarUnCuestionarioAlumno(Integer idCuestionarioAlumno) {
+	public CuestionarioAlumno mostrarCuestionarioAlumno(Integer idCuestionarioAlumno) {
 		// TODO Auto-generated method stub
 		Optional<CuestionarioAlumno> auxiliar = Optional.of(new CuestionarioAlumno());
 		auxiliar = cuestionarioAlumnoRepository.findById(idCuestionarioAlumno);
@@ -51,7 +51,7 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 	}
 
 	@Override
-	public CuestionarioAlumno modificarUnCuestionarioAlumno(Integer idCuestionarioAlumno) {
+	public CuestionarioAlumno modificarCuestionarioAlumno(Integer idCuestionarioAlumno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,7 +60,7 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 		//cuestionarioAlumnoRepository.deleteById(unIdCuestionarioAlumno);
 		Optional<CuestionarioAlumno> auxiliar=Optional.of(new CuestionarioAlumno());
 		auxiliar= cuestionarioAlumnoRepository.findById(unIdCuestionarioAlumno);
-		auxiliar.get().setEstado(false);
+		auxiliar.get().setEstadoCuestionarioAlumno(false);
 		cuestionarioAlumnoRepository.save(auxiliar.get());
 	}
 

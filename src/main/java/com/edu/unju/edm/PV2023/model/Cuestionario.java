@@ -28,7 +28,7 @@ public class Cuestionario {
     //@JoinColumn(name="idAlumno")
 	//Alumno alumno;
 	
-	@NotNull(message = "se necesita:puntajeFinal")
+	//@NotNull(message = "se necesita:puntajeFinal")
 	private Integer puntajeFinal;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -51,14 +51,12 @@ public class Cuestionario {
 	//@NotBlank(message="se necesita: pregunta4")
 	private Pregunta pregunta4;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idPregunta5")
-	//@NotBlank(message="se necesita: pregunta5")
-	private Pregunta pregunta5;
 	
 	private Boolean estadoCuestionario;
 	
-	public Cuestionario(){}
+	public Cuestionario(){
+		
+	}
 
 	
 	public Integer getIdCuestionario() {
@@ -116,16 +114,6 @@ public class Cuestionario {
 
 	public void setPregunta4(Pregunta pregunta4) {
 		this.pregunta4 = pregunta4;
-	}
-
-
-	public Pregunta getPregunta5() {
-		return pregunta5;
-	}
-
-
-	public void setPregunta5(Pregunta pregunta5) {
-		this.pregunta5 = pregunta5;
 	}
 
 

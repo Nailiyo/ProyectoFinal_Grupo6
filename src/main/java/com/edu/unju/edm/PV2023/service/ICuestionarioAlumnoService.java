@@ -8,9 +8,9 @@ public interface ICuestionarioAlumnoService {
 
 	public void cargarCuestionarioAlumno(CuestionarioAlumno unCuestionarioAlumno);
 	public void eliminarCuestionarioAlumno(Integer unIdCuestionarioAlumno);
-	public ArrayList<CuestionarioAlumno> listarCuestionarioAlumno();
-	public CuestionarioAlumno mostrarUnCuestionarioAlumno(Integer idCuestionarioAlumno);
+	public ArrayList<CuestionarioAlumno> listarCuestionarioAlumnos();
+	public CuestionarioAlumno mostrarCuestionarioAlumno(Integer idCuestionarioAlumno);
 	public void eliminarTodosLosCuestionarioAlumno();
-	public CuestionarioAlumno modificarUnCuestionarioAlumno(Integer idCuestionarioAlumno);
+	public CuestionarioAlumno modificarCuestionarioAlumno(Integer idCuestionarioAlumno);
 	
 }

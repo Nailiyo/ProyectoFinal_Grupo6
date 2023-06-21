@@ -1,13 +1,14 @@
 package com.edu.unju.edm.PV2023.controller;
 
 import java.io.IOException;
-import java.util.Base64;
+
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.service.IAlumnoService;
 
+import jakarta.validation.Valid;
+
 
 
 @Controller
@@ -29,8 +32,8 @@ public class alumnoController {
     private static final Log G6 = LogFactory.getLog(alumnoController.class);
     @Autowired
     Alumno unAlumno;
-    @Autowired
     @Qualifier("serviceAlumnoMySQL")
+    @Autowired
     IAlumnoService alumnoService;
     @GetMapping("/cargarAlumno")
     public ModelAndView cargarAlumno(){
@@ -39,7 +42,14 @@ public class alumnoController {
         return cargarAlumno;
     }
     @PostMapping("/guardarAlumno")
-    public ModelAndView guardarAlumno(@ModelAttribute("alumno")Alumno unAlumnoConDatos){
+    public ModelAndView guardarAlumno(@Valid @ModelAttribute("alumno")Alumno unAlumnoConDatos, BindingResult resultado){
+    	if(resultado.hasErrors()) {
+    		G6.error(resultado.getAllErrors());
+    		ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante.html");
+            cargarAlumno.addObject("alumno", unAlumnoConDatos);
+            return cargarAlumno;
+    	}
+    	
         ModelAndView listarAlumnos = new ModelAndView("mostrarEstudiante");
         G6.warn("mostrando alumno"+unAlumnoConDatos.getNombreAlumno());
         try{

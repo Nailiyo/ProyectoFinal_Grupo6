@@ -132,18 +132,28 @@
 						
 						<label class="custom-label">Nombre</label>
 						<input class="form-control" type="text" th:field="*{nombreDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('nombreDocente')}" th:errors="*{nombreDocente}"></div>
 						
 						<label class="custom-label">Apellido</label>
 						<input class="form-control" type="text" th:field="*{apellidoDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('apellidoDocente')}" th:errors="*{apellidoDocente}"></div>
 						
 						<label class="custom-label">DNI</label>
 						<input class="form-control" type="number" th:field="*{dniDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniDocente')}" th:errors="*{dniDocente}"></div>
 						
 						<label class="custom-label">Materia</label>
 						<input class="form-control" type="text" th:field="*{materiaDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('materiaDocente')}" th:errors="*{materiaDocente}"></div>
+						
+						<label class="custom-label">Email</label>
+						<input class="form-control" type="email" th:field="*{emailDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('emailDocente')}" th:errors="*{emailDocente}"></div>
 						
 						<label class="custom-label">Contraseña</label>
 						<input class="form-control" type="password" th:field="*{contraseñaDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaDocente')}" th:errors="*{contraseñaDocente}"></div>
+						
 						
 						<!--<label class="custom-label">Estado</label>
            				<input class="checkbox-input" type="checkbox" th:field="*{estadoDocente}"><br>-->

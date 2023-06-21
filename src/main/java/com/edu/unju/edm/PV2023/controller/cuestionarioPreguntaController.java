@@ -1,6 +1,10 @@
 package com.edu.unju.edm.PV2023.controller;
 
+
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +21,9 @@ import jakarta.validation.Valid;
 @Controller
 public class cuestionarioPreguntaController {
 
+	private static final Log G6 = LogFactory.getLog(cuestionarioPreguntaController.class);
+	
+	//@Qualifier("serviceCuestionarioPreguntasMySQL")
 	@Autowired
 	ICuestionarioPreguntaService cuestionarioPreguntaService;
 	@Autowired
@@ -28,8 +35,8 @@ public class cuestionarioPreguntaController {
 	
 	@GetMapping("/CuestionarioPregunta")
 	public ModelAndView cargarCuestionarioPregunta() {
-		ModelAndView modelAndView= new ModelAndView("cargarCuestionario.html");
-		modelAndView.addObject("cuestionario", unCuestionarioPregunta);
+		ModelAndView modelAndView= new ModelAndView("cargarCuestionario");
+		modelAndView.addObject("cuestionarioPregunta", unCuestionarioPregunta);
 		modelAndView.addObject("cuestionario",cuestionarioService.listarCuestionarios());
 		modelAndView.addObject("pregunta", preguntaService.listarPreguntas());
 		return modelAndView;
@@ -37,11 +44,14 @@ public class cuestionarioPreguntaController {
 	}
 	
 	@PostMapping("/cargarCuestionarioPregunta")
-	public ModelAndView guardarCuestionarioPregunta(@Valid @ModelAttribute("cuestionario") CuestionarioPregunta unCuestionarioPreguntaConDatos, BindingResult resultados) {
+	public ModelAndView guardarCuestionarioPregunta(@Valid @ModelAttribute("cuestionarioPregunta") CuestionarioPregunta unCuestionarioPreguntaConDatos, BindingResult resultado) {
 		
-		if(resultados.hasErrors()) {
-			ModelAndView modelAndView= new ModelAndView("listarCuestionario");
-			modelAndView.addObject("unCuestionario", unCuestionarioPreguntaConDatos);
+		if(resultado.hasErrors()) {
+			G6.error(resultado.getAllErrors());
+			ModelAndView modelAndView= new ModelAndView("cargarCuestionario");
+			modelAndView.addObject("cuestionarioPregunta", unCuestionarioPreguntaConDatos);
+			modelAndView.addObject("cuestionario",cuestionarioService.listarCuestionarios());
+			modelAndView.addObject("pregunta", preguntaService.listarPreguntas());
 			return modelAndView;
 		}
 		

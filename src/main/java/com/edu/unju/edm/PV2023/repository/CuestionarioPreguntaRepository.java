@@ -8,4 +8,5 @@ import com.edu.unju.edm.PV2023.model.CuestionarioPregunta;
 @Repository
 public interface CuestionarioPreguntaRepository extends CrudRepository<CuestionarioPregunta, Integer>{
 
+
 }

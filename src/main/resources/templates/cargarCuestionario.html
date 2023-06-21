@@ -19,43 +19,43 @@
 					<div class="form-group mb-3">
 						
 						<label class="custom-label">Pregunta 1</label>
-						<select class="form-control" th:field="*{pregunta1.idPregunta}">
+						<select class="form-control" th:field="*{pregunta1}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" 
 						th:text="${pregunta.descripcion}"></option>
 						</select><br><br>
 						
-						
 						<label class="custom-label">Pregunta 2</label>
-						<select class="form-control" th:field="*{pregunta2.idPregunta}">
+						<select class="form-control" th:field="*{pregunta2}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
 						
 						<label class="custom-label">Pregunta 3</label>
-						<select class="form-control" th:field="*{pregunta3.idPregunta}">
+						<select class="form-control" th:field="*{pregunta3}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
-						<br><br>
+						<br><br>						
 						
 						<label class="custom-label">Pregunta 4</label>
-						<select class="form-control" th:field="*{pregunta4.idPregunta}">
-						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
-						</select>
-						<br><br>
-						
-						<label class="custom-label">Pregunta 5</label>
-						<select class="form-control" th:field="*{pregunta5.idPregunta}">
+						<select class="form-control" th:field="*{pregunta4}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
 						
 						<label class="custom-label">Docente</label>
-						<select class="form-control" th:field="*{unDocente.idDocente}">
+						<select class="form-control" th:field="*{unDocente}">
 						<option th:each="unDocente:${docenteListado}" th:value="${unDocente.idDocente}" 
 						th:text="${unDocente.apellidoDocente}"></option>
-						</select><br><br>
+						</select>
+						<br><br>
 						
-						<input class="btn btn-registrar" type="submit" value="REGISTRAR"><br>
+						<label class="custom-label">Puntaje TOTAL</label>
+						<input class="form-control" type="number" th:field="*{puntajeFinal}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntajeFinal')}" th:errors="*{puntajeFinal}"></div>
+						<br>
+							
+						<input class="btn btn-registrar" type="submit" value="REGISTRAR"><br><br>
+						<input type="reset" value="RESETEAR">
 						
 						
 						

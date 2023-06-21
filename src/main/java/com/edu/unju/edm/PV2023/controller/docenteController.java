@@ -4,6 +4,8 @@ package com.edu.unju.edm.PV2023.controller;
 import com.edu.unju.edm.PV2023.model.Docente;
 import com.edu.unju.edm.PV2023.service.IDocenteService;
 
+import jakarta.validation.Valid;
+
 import java.io.IOException;
 
 import org.apache.juli.logging.Log;
@@ -11,6 +13,7 @@ import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +38,15 @@ import org.springframework.web.servlet.ModelAndView;
         }
 
         @PostMapping("/guardarDocente")
-        public ModelAndView guardarDocente(@ModelAttribute("docente") Docente unDocenteConDatos) {
-            ModelAndView listarDocentes = new ModelAndView("mostrarDocente");
+        public ModelAndView guardarDocente(@Valid @ModelAttribute("docente") Docente unDocenteConDatos, BindingResult resultado) {
+            if(resultado.hasErrors()) {
+            	G6.error(resultado.getAllErrors());
+            	ModelAndView cargarDocente = new ModelAndView("cargarDocente.html");
+                cargarDocente.addObject("docente",unDocenteConDatos);
+                return cargarDocente;
+            }
+        	
+        	ModelAndView listarDocentes = new ModelAndView("mostrarDocente");
             G6.warn("mostrando el nuevo docente"+unDocenteConDatos.getNombreDocente());
             try{
             docenteService.cargarDocente(unDocenteConDatos);

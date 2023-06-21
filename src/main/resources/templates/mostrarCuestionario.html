@@ -107,18 +107,19 @@
         <td><b> Pregunta 2 </b> </td>
         <td><b> Pregunta 3 </b> </td>
         <td><b> Pregunta 4 </b> </td>
-        <td><b> Pregunta 5 </b> </td>
+        <td><b> Puntaje FINAL </b> </td>
         <td><b> Profesor </b> </td>
         </tr>
         <tr>
         </tr> 
          <tr th:each="cuestionario : ${cuestionarioListado}"> 
-                  <td th:text="${cuestionario.pregunta1}"></td>
-                  <td th:text="${cuestionario.pregunta2}"></td>
-                  <td th:text="${cuestionario.pregunta3}"></td> 
-                  <td th:text="${cuestionario.pregunta4}"></td>
-                  <td th:text="${cuestionario.pregunta5}"></td> 
+                  <td th:text="${cuestionario.pregunta1.idPregunta}"></td>
+                  <td th:text="${cuestionario.pregunta2.descripcion}"></td>
+                  <td th:text="${cuestionario.pregunta3.descripcion}"></td> 
+                  <td th:text="${cuestionario.pregunta4.descripcion}"></td>
+                  <td th:text="${cuestionario.puntajeFinal}"></td>
                   <td th:text="${cuestionario.unDocente}"></td> 
+                  
                   <td> 
                          <button class="btn btn-primary" type="submit">Editar</button> 
                          <button class="btn btn-primary" type="submit">Borrar</button>

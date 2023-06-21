@@ -7,6 +7,7 @@ import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +24,15 @@ import com.edu.unju.edm.PV2023.service.IPreguntaService;
 @Controller
 public class cuestionarioController {
 
-	private static final Log G6 = LogFactory.getLog(docenteController.class);
-    @Autowired
-    Cuestionario unCuestionario;
-        @Autowired
-        @Qualifier("serviceCuestionarioMySQL")
-        ICuestionarioService cuestionarioService;
-
+	private static final Log G6 = LogFactory.getLog(cuestionarioController.class);
+    
+    	@Autowired
+    	//@Qualifier("serviceCuestionarioMySQL")
+    	Cuestionario unCuestionario;
+        
+    	@Autowired
+    	ICuestionarioService cuestionarioService;
+    	
         @Autowired
         IPreguntaService preguntaService;
         
@@ -38,21 +41,31 @@ public class cuestionarioController {
         
         @GetMapping("/cargarCuestionario")
         public ModelAndView cargarCuestionario() {
-            ModelAndView cargarCuestionario= new ModelAndView("cargarCuestionario.html");
+            ModelAndView cargarCuestionario= new ModelAndView("cargarCuestionario");
             cargarCuestionario.addObject("cuestionario",unCuestionario);
             cargarCuestionario.addObject("preguntaListado",preguntaService.listarPreguntas());
             cargarCuestionario.addObject("docenteListado",docenteService.listarDocentes());
-            
             return cargarCuestionario;
         }
 
         @PostMapping("/guardarCuestionario")
-        public ModelAndView guardarCuestionario(@ModelAttribute("cuestionario") Cuestionario unCuestionarioConDatos) {
-            ModelAndView listarCuestionarios = new ModelAndView("mostrarCuestionario");
+        public ModelAndView guardarCuestionario(@ModelAttribute("cuestionario") Cuestionario unCuestionarioConDatos, BindingResult resultado) {
+            if(resultado.hasErrors()) {
+            	G6.error(resultado.getAllErrors());
+            	ModelAndView cargarCuestionario= new ModelAndView("cargarCuestionario");
+            	cargarCuestionario.addObject("cuestionario",unCuestionarioConDatos);
+            	cargarCuestionario.addObject("preguntaListado",preguntaService.listarPreguntas());
+            	cargarCuestionario.addObject("docenteListado",docenteService.listarDocentes());
+            	return cargarCuestionario;
+            }
+        	
+        	ModelAndView listarCuestionarios = new ModelAndView("mostrarCuestionario");
             G6.warn("mostrando el nuevo Cuestionario"+unCuestionarioConDatos.getUnDocente());
             try{
             cuestionarioService.cargarCuestionario(unCuestionarioConDatos);
-            }catch(Exception e){}
+            }catch(Exception e){
+            	listarCuestionarios.addObject("ERROR MESSAGE", e.getMessage());
+            }
             listarCuestionarios.addObject("cuestionarioListado",cuestionarioService.listarCuestionarios());
             return listarCuestionarios;
         }
@@ -94,7 +107,7 @@ public class cuestionarioController {
     		
     		ModelAndView listadoFinal= new ModelAndView("mostrarCuestionario");
     		
-    		G6.warn("Mostrando el nuevo producto " + nuevoCuestionario.getPregunta2());
+    		//G6.warn("Mostrando el nuevo producto " + nuevoCuestionario.getEstadoCuestionario());
     		
     		try {
     			

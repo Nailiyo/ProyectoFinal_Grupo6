@@ -8,21 +8,21 @@ import java.util.Optional;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.edu.unju.edm.PV2023.repository.CuestionarioPreguntaRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioPreguntaService;
 
 @Service
-@Qualifier("serviceCuestionarioPreguntasMySQL")
+//@Qualifier("serviceCuestionarioPreguntasMySQL")
 public class ImpMySQLCuestionarioPreguntaService implements ICuestionarioPreguntaService {
 
 	
 	@Autowired
 	CuestionarioPreguntaRepository cuestionarioPreguntaRepository;
 	
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLDocenteService.class);
+	private static final Log G6 = LogFactory.getLog(ImpMySQLCuestionarioPreguntaService.class);
 
 	@Override
 	public void cargarCuestionarioPregunta(CuestionarioPregunta unCuestionarioPregunta) {
@@ -36,7 +36,7 @@ public class ImpMySQLCuestionarioPreguntaService implements ICuestionarioPregunt
 	public ArrayList<CuestionarioPregunta> listarCuestionarioPreguntas() {
 		
 	//return (ArrayList<CuestionarioPregunta>) cuestionarioPreguntaRepository; //.findByEstadoCuestionarioPreguntas(true);
-	return null;
+		return null;
 	}
 
 	@Override
