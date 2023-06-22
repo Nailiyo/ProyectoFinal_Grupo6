@@ -1,5 +1,7 @@
 package com.edu.unju.edm.PV2023.controller;
 
+import javax.validation.Valid;
+
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import com.edu.unju.edm.PV2023.service.IAlumnoService;
 import com.edu.unju.edm.PV2023.service.ICuestionarioAlumnoService;
 import com.edu.unju.edm.PV2023.service.ICuestionarioService;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 
 @Controller
 public class cuestionarioAlumnoController {

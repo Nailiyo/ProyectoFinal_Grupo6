@@ -1,13 +1,125 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>Carga de Cuestionario</title>
-	<link href="css/styles.css" rel="stylesheet" type="text/css">
-	
+  <meta charset="UTF-8">
+  <title>Carga de Cuestionario</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: #eaf2f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+	.header {
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: auto;
+    }
+    
+    .header-text {
+      font-family: cursive;
+      color: #005c89;
+      font-size: 23px;
+      margin: 0;
+      margin-left: 80px;
+    }
+
+    .header-button {
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-button:hover {
+      background-color: #005c89;
+    }
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .docente {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0083ca;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .custom-label {
+      font-weight: bold;
+      color: #0083ca;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+     .checkbox-input {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+    /* Estilos para los botones */
+    .btn-registrar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-registrar:hover {
+      background-color: #005c89;
+    }
+  </style>
 </head>
 
 <body>
+
+<div class="header">
+    <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
+    <h1 class="header-text">Virtual-EDM</h1>
+    <a href="/" class="header-button">Volver al inicio</a>
+  </div>
+
 <div class="container-fluid">
 		<div class="row">
 			<div class="col-3">
@@ -19,25 +131,25 @@
 					<div class="form-group mb-3">
 						
 						<label class="custom-label">Pregunta 1</label>
-						<select class="form-control" th:field="*{pregunta1}">
+						<select class="form-control" th:field="*{pregunta1.idPregunta}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" 
 						th:text="${pregunta.descripcion}"></option>
 						</select><br><br>
 						
 						<label class="custom-label">Pregunta 2</label>
-						<select class="form-control" th:field="*{pregunta2}">
+						<select class="form-control" th:field="*{pregunta2.idPregunta}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
 						
 						<label class="custom-label">Pregunta 3</label>
-						<select class="form-control" th:field="*{pregunta3}">
+						<select class="form-control" th:field="*{pregunta3.idPregunta}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>						
 						
 						<label class="custom-label">Pregunta 4</label>
-						<select class="form-control" th:field="*{pregunta4}">
+						<select class="form-control" th:field="*{pregunta4.idPregunta}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
@@ -54,8 +166,8 @@
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntajeFinal')}" th:errors="*{puntajeFinal}"></div>
 						<br>
 							
-						<input class="btn btn-registrar" type="submit" value="REGISTRAR"><br><br>
-						<input type="reset" value="RESETEAR">
+						<input class="btn btn-registrar" type="submit" value="REGISTRAR">
+						<input class="btn btn-registrar" type="reset" value="RESETEAR">
 						
 						
 						
@@ -65,6 +177,36 @@
 	</div>
 	</div>					
 </div>
-
+<footer>
+  <div class="footer-container">
+    <div class="footer-row">
+      <div class="footer-column">
+        <h3>Virtual EDM</h3>
+        <p>Un lugar para aprender y crecer juntos</p>
+      </div>
+      <div class="footer-column">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/cuestionarioAlumno">Cuestionarios</a></li>
+          <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa fa-map-marker"></i> Dirección: Avda Italia Nro 47, San Salvador de Jujuy</li>
+          <li><i class="fa fa-envelope"></i> Email: info@virtualedm.com</li>
+          <li><i class="fa fa-phone"></i> Teléfono: +54 388 912 1831</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-row">
+      <div class="footer-column">
+        <p class="text-center">© 2023 Virtual. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

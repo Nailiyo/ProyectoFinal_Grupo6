@@ -4,9 +4,11 @@ package com.edu.unju.edm.PV2023.controller;
 import com.edu.unju.edm.PV2023.model.Docente;
 import com.edu.unju.edm.PV2023.service.IDocenteService;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 
 import java.io.IOException;
+
+import javax.validation.Valid;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;

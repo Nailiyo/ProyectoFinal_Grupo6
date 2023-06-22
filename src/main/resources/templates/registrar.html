@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Carga de Cuestionario</title>
+  <title>SUPER REGISTRACION</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <style>
     body {
@@ -113,53 +113,65 @@
 </head>
 
 <body>
-
-<div class="header">
+	 <div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   </div>
-
-<div class="container-fluid">
+	
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-3">
 			</div>
-			<div class="col-6 cuestionarioAlumno">
-				<h1>RESOLVE EL CUESTIONARIO CHADSON</h1>
-				<form th:object="${cuesAlumno}" th:action="@{/guardarCuestionarioAlumno}" method="post">
-					
+			<div class="col-6 docente">
+				<h3>LA REGISTRACION</h3>
+				<form th:object="${docente}" th:action="@{/login}" method="post">
 					<div class="form-group mb-3">
+					
+						<label class="custom-label">Usuario</label>
+						<input class="form-control" type="email" th:field="*{emailDocente}"><br><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('emailDocente')}" th:errors="*{emailDocente}"></div>
 						
-						<label class="custom-label">Alumno</label>
-						<select class="form-control" th:field="*{unAlumno.idAlumno}">
-						<option th:each="unAlumno:${alumnoListado}" th:value="${unAlumno.idAlumno}" th:text="${unAlumno.apellidoAlumno}"></option>
-						</select>
-						<br><br>
+						<label class="custom-label">Contraseña</label>
+						<input class="form-control" type="text" th:field="*{contraseñaDocente}"><br><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaDocente')}" th:errors="*{contraseñaDocente}"></div>
 						
-						<label class="custom-label">Cuestionario</label>
-						<select class="form-control" th:field="*{unCuestionario.idCuestionario}">
-						<option th:each="unCuestionario:${cuestionarioListado}" th:value="${unCuestionario.idCuestionario}" th:text="${unCuestionario.idCuestionario}"></option>
-						</select>
-						<br><br>
+						<!-- <label class="custom-label">Apellido</label>
+						<input class="form-control" type="text" th:field="*{apellidoDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('apellidoDocente')}" th:errors="*{apellidoDocente}"></div>
 						
-						<label class="custom-label">Fecha Completado</label>
-						<input class="form-control" type="date" th:field="*{fechaCompletado}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaCompletado')}" th:errors="*{fechaCompletado}"></div>
-						<br>
+						<label class="custom-label">DNI</label>
+						<input class="form-control" type="number" th:field="*{dniDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniDocente')}" th:errors="*{dniDocente}"></div>
 						
-						<label class="custom-label">Puntaje Logrado</label>
-						<input class="form-control" type="number" th:field="*{puntajeLogrado}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntajeLogrado')}" th:errors="*{puntajeLogrado}"></div>
-						<br>
+						<label class="custom-label">Materia</label>
+						<input class="form-control" type="text" th:field="*{materiaDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('materiaDocente')}" th:errors="*{materiaDocente}"></div>
 						
-						<input class="btn btn-registrar" type="submit" value="SUBE LOS DATOS PERRO">
-						<input class="btn btn-registrar" type="reset" value="RESETEAR">
+						<label class="custom-label">Email</label>
+						<input class="form-control" type="email" th:field="*{emailDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('emailDocente')}" th:errors="*{emailDocente}"></div>
 						
+						<label class="custom-label">Contraseña</label>
+						<input class="form-control" type="password" th:field="*{contraseñaDocente}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaDocente')}" th:errors="*{contraseñaDocente}"></div>
+						
+						
+						<!--<label class="custom-label">Estado</label>
+           				<input class="checkbox-input" type="checkbox" th:field="*{estadoDocente}"><br>-->
+						
+
+						<br><input class="btn btn-registrar" type="submit" value="REGISTRAR">
+						 
+
+					</div>
+				</form>
+			</div>
+			<div class="col-3">
+			</div>
+		</div>
 	</div>
-	</form>
-	</div>
-	</div>					
-</div>
+	
 </body>
 <footer>
   <div class="footer-container">

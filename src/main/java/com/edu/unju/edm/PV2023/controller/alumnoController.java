@@ -2,6 +2,7 @@ package com.edu.unju.edm.PV2023.controller;
 
 import java.io.IOException;
 
+import javax.validation.Valid;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.service.IAlumnoService;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 
 
 

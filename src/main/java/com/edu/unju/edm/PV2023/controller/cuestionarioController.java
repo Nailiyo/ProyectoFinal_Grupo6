@@ -2,6 +2,8 @@ package com.edu.unju.edm.PV2023.controller;
 
 import java.io.IOException;
 
+import javax.validation.Valid;
+
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,7 @@ public class cuestionarioController {
         }
 
         @PostMapping("/guardarCuestionario")
-        public ModelAndView guardarCuestionario(@ModelAttribute("cuestionario") Cuestionario unCuestionarioConDatos, BindingResult resultado) {
+        public ModelAndView guardarCuestionario(@Valid @ModelAttribute("cuestionario") Cuestionario unCuestionarioConDatos, BindingResult resultado) {
             if(resultado.hasErrors()) {
             	G6.error(resultado.getAllErrors());
             	ModelAndView cargarCuestionario= new ModelAndView("cargarCuestionario");

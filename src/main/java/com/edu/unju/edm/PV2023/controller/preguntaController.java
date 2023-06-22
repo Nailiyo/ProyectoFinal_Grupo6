@@ -2,6 +2,8 @@ package com.edu.unju.edm.PV2023.controller;
 
 import java.io.IOException;
 
+import javax.validation.Valid;
+
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,7 @@ private static final Log G6 = LogFactory.getLog(preguntaController.class);
         return cargarPregunta;
     }
     @PostMapping("/guardarPregunta")
-    public ModelAndView guardarPregunta(@ModelAttribute("pregunta") Pregunta unaPreguntaConDatos, BindingResult resultado) {
+    public ModelAndView guardarPregunta(@Valid @ModelAttribute("pregunta") Pregunta unaPreguntaConDatos, BindingResult resultado) {
         if(resultado.hasErrors()) {
         	G6.error(resultado.getAllErrors());
             ModelAndView cargarPregunta = new ModelAndView("cargarPregunta");
