@@ -189,16 +189,17 @@
 
    						 <label class="custom-label">Nivel:</label>
     						<select th:field="*{nivelPregunta}" class="form-control">
-      						<option th:value="facil">Fácil</option>
-      						<option th:value="intermedio">Intermedio</option>
-      						<option th:value="dificil">Difícil</option>
+      						<option th:value="1">Fácil</option>
+      						<option th:value="2">Intermedio</option>
+      						<option th:value="3">Difícil</option>
     						</select>
     						
-						<label class="custom-label">Puntaje</label>
+						<!-- <label class="custom-label">Puntaje</label>
 						<input class="form-control" type="number" th:field="*{puntaje}"><br>
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntaje')}" th:errors="*{puntaje}"></div>
-						<!--<label class="custom-label">Estado</label>
+						<label class="custom-label">Estado</label>
             			<input class="checkbox-input" type="checkbox" th:field="*{estado}"><br>-->
+            			
 						
 						<input class="btn btn-registrar" type="submit" value="CARGAR">
 						<input class="btn btn-registrar" type="reset" value="RESETEAR">

@@ -1,18 +1,23 @@
 package com.edu.unju.edm.PV2023.service.imp;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.edu.unju.edm.PV2023.model.CuestionarioAlumno;
-
+import com.edu.unju.edm.PV2023.model.Pregunta;
 import com.edu.unju.edm.PV2023.repository.CuestionarioAlumnoRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioAlumnoService;
+import com.edu.unju.edm.PV2023.service.ICuestionarioPreguntaService;
+
 
 @Service
 //@Qualifier("serviceCuestionarioAlumnoMySQL")
@@ -20,12 +25,15 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 
 	@Autowired
 	CuestionarioAlumnoRepository cuestionarioAlumnoRepository;
+	
+	@Autowired
+	ICuestionarioPreguntaService cuestionarioPreguntaService;
+	
 	private static final Log G6 = LogFactory.getLog(ImpMySQLCuestionarioAlumnoService.class);
 	
 	@Override
 	public void cargarCuestionarioAlumno(CuestionarioAlumno unCuestionarioAlumno) {
 		
-		unCuestionarioAlumno.setEstadoCuestionarioAlumno(true);
 		cuestionarioAlumnoRepository.save(unCuestionarioAlumno);
 		
 	}
@@ -33,7 +41,7 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 	@Override
 	public ArrayList<CuestionarioAlumno> listarCuestionarioAlumnos() {
 		
-		return (ArrayList<CuestionarioAlumno>) cuestionarioAlumnoRepository.findByEstadoCuestionarioAlumno(true);
+		return (ArrayList<CuestionarioAlumno>) cuestionarioAlumnoRepository.findAll();
 	}
 
 	@Override
@@ -57,11 +65,34 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 	}
 	@Override
 	public void eliminarCuestionarioAlumno(Integer unIdCuestionarioAlumno) {
-		//cuestionarioAlumnoRepository.deleteById(unIdCuestionarioAlumno);
-		Optional<CuestionarioAlumno> auxiliar=Optional.of(new CuestionarioAlumno());
-		auxiliar= cuestionarioAlumnoRepository.findById(unIdCuestionarioAlumno);
-		auxiliar.get().setEstadoCuestionarioAlumno(false);
-		cuestionarioAlumnoRepository.save(auxiliar.get());
+		CuestionarioAlumno aux = cuestionarioAlumnoRepository.findById(unIdCuestionarioAlumno).get();
+		cuestionarioAlumnoRepository.delete(aux);
+	}
+
+	@Override
+	public Integer calcularPuntajeObtenido(Integer idCuestionario, Map<String, String> opcionesElegidas) {
+		ArrayList<Pregunta> preguntas = cuestionarioPreguntaService.ListarPreguntasDeUnCuestionario(idCuestionario);
+		ArrayList<Integer> opcionesCorrectas = cuestionarioPreguntaService.ListarRespuestasDePreguntas(idCuestionario);
+		ArrayList<Integer> puntajes= cuestionarioPreguntaService.ListadoDePuntajes(idCuestionario);
+		Integer puntajeObtenido=0;
+		
+		for(int i=0;i<preguntas.size();i++) {
+			String opcion= opcionesElegidas.get("respuestasSeleccionadas[" + preguntas.get(i).getIdPregunta() + "]");
+			Integer aux= Integer.parseInt(opcion);
+			if(aux==opcionesCorrectas.get(i)) {
+				puntajeObtenido+=puntajes.get(i);
+			}
+		}
+		return puntajeObtenido;
+	}
+	
+
+	@Override
+	public String fechaActual() {
+		LocalDate fechaActual = LocalDate.now();
+		String fechaString = fechaActual.toString();
+
+		return fechaString;
 	}
 
 	

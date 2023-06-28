@@ -37,20 +37,20 @@ public class CuestionarioAlumno {
 	Cuestionario unCuestionario;
 	
 	@NotNull(message="se necesita: FechaRealizada")
-	private Date fechaCompletado;
+	private String fechaCompletado;
 	
 	@NotNull(message="se necesita: Puntaje Logrado")
 	private Integer puntajeLogrado;
 	
-	private Boolean estadoCuestionarioAlumno;
+	// Boolean estadoCuestionarioAlumno;
 	
 	public CuestionarioAlumno() {}
-	public CuestionarioAlumno(Alumno unAlumno, Cuestionario unCuestionario, Date fechaCompletado, Integer puntajeLogrado, Boolean estadoCuestionarioAlumno) {
+	public CuestionarioAlumno(Alumno unAlumno, Cuestionario unCuestionario, String fechaCompletado, Integer puntajeLogrado) {
 		this.unAlumno = unAlumno;
         this.unCuestionario = unCuestionario;
         this.fechaCompletado = fechaCompletado;
         this.puntajeLogrado = puntajeLogrado;
-        this.estadoCuestionarioAlumno = estadoCuestionarioAlumno;
+        //this.estadoCuestionarioAlumno = estadoCuestionarioAlumno;
     }
 	public Integer getIdCuestionarioAlumno() {
 		return idCuestionarioAlumno;
@@ -67,13 +67,13 @@ public class CuestionarioAlumno {
 	public Cuestionario getUnCuestionario() {
 		return unCuestionario;
 	}
-	public void setunCuestionario(Cuestionario unCuestionario) {
+	public void setUnCuestionario(Cuestionario unCuestionario) {
 		this.unCuestionario = unCuestionario;
 	}
-	public Date getFechaCompletado() {
+	public String getFechaCompletado() {
 		return fechaCompletado;
 	}
-	public void setFechaCompletado(Date fechaCompletado) {
+	public void setFechaCompletado(String fechaCompletado) {
 		this.fechaCompletado = fechaCompletado;
 	}
 	public Integer getPuntajeLogrado() {
@@ -82,10 +82,10 @@ public class CuestionarioAlumno {
 	public void setPuntajeLogrado(Integer puntajeLogrado) {
 		this.puntajeLogrado = puntajeLogrado;
 	}
-	public Boolean getEstadoCuestionarioAlumno() {
+	/**public Boolean getEstadoCuestionarioAlumno() {
 		return estadoCuestionarioAlumno;
 	}
 	public void setEstadoCuestionarioAlumno(Boolean estadoCuestionarioAlumno) {
 		this.estadoCuestionarioAlumno = estadoCuestionarioAlumno;
-	}
+	}**/
 }

@@ -49,8 +49,10 @@ public class Alumno {
     @Email
     private String emailAlumno;
     
+    private String tipo;
+    
     public Alumno(){super();}
-    public Alumno(Integer idAlumno,String emailAlumno, Integer dniAlumno, String nombreAlumno, String apellidoAlumno, Boolean estadoAlumno, String contraseñaAlumno){
+    public Alumno(Integer idAlumno,String emailAlumno, Integer dniAlumno, String nombreAlumno, String apellidoAlumno, Boolean estadoAlumno, String contraseñaAlumno, String tipo){
         super();
         this.emailAlumno = emailAlumno;
         this.idAlumno = idAlumno;
@@ -59,6 +61,7 @@ public class Alumno {
         this.apellidoAlumno = apellidoAlumno;
         this.estadoAlumno = estadoAlumno;
         this.contraseñaAlumno = contraseñaAlumno;
+        this.tipo = tipo;
     }
     public Integer getIdAlumno() {
         return idAlumno;
@@ -102,5 +105,11 @@ public class Alumno {
     public void setEmailAlumno(String emailAlumno) {
         this.emailAlumno = emailAlumno;
     }
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }
 

@@ -127,7 +127,7 @@
       <div class="col-3"></div>
       <div class="col-6 alumno">
         <h3>Cargar Alumno</h3>
-        <form th:object="${alumno}" th:action="@{/guardarAlumno}" method="post">
+        <form th:object="${alumno}" th:action="${band}?@{/modificarAlumno}:@{/guardarAlumno}" method="post">
           <div class="form-group mb-3">
           
             <!--<label class="custom-label">idAlumno</label>

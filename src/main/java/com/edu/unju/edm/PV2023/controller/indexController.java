@@ -13,11 +13,13 @@ public class indexController {
 	@Autowired
 	Docente unDocente;
 	
-	@GetMapping("/")
+	@GetMapping({"/","/index","/home","login"})
     public ModelAndView cargarPrincipal() {
-        ModelAndView modelAndView= new ModelAndView("registrar");
-        modelAndView.addObject("docente",unDocente);
+        ModelAndView modelAndView= new ModelAndView("index");
+        modelAndView.addObject("docenteParaLoguear",unDocente);
         return modelAndView;
     }
+	
+	
 	
 }

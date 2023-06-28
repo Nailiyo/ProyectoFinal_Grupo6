@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Carga de Alumno</title>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: #eaf2f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+	
+	.header {
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: auto;
+    }
+    
+    .header-text {
+      font-family: cursive;
+      color: #005c89;
+      font-size: 23px;
+      margin: 0;
+      margin-left: 80px;
+    }
+
+    .header-button {
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-button:hover {
+      background-color: #005c89;
+    }
+    
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .alumno {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0083ca;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .custom-label {
+      font-weight: bold;
+      color: #0083ca;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .checkbox-input {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+    /* Estilos para los botones */
+    .btn-registrar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-registrar:hover {
+      background-color: #005c89;
+    }
+  </style>
+</head>
+<body>
+
+
+<ul class="navbar-nav ms-auto">
+			<li class="nav-item">
+	          <a class="nav-link" th:href="@{/listadoCuestionarios}">Listado de Cuestionarios</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:href="@{/listadoDocente}">Docentes</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:href="@{/listadoEstudiante}">Estudiantes</a>
+	        </li>
+	      </ul>
+	      <button class="btn btn-secondary" type="button" href="/login?logout">Cerrar Sesión</button>
+
+
+
+</body>
+</html>

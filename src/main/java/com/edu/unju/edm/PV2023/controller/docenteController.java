@@ -57,6 +57,13 @@ import org.springframework.web.servlet.ModelAndView;
             return listarDocentes;
         }
         
+        @GetMapping("/listaDeDocentes")
+    	public ModelAndView mostrarDocentes() {
+    		ModelAndView listadoDocentes = new ModelAndView("vistaDocente");
+    		listadoDocentes.addObject("docenteListado", unDocente);
+    		listadoDocentes.addObject("docenteListado",docenteService.listarDocentes());
+    		return listadoDocentes;
+    	}
         
         @GetMapping("/eliminarDocente/{idDocente}")
     	@ResponseBody

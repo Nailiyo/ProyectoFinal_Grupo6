@@ -48,11 +48,13 @@ public class Docente {
     @Size (min=3, max=20)
     private String contraseñaDocente;
     
+    private String tipo;
+    
     @NotBlank(message="se necesita: emailDocente")
     @Email
     private String emailDocente;
     public Docente(){super();}
-    public Docente(Integer idDocente, Integer dniDocente, String emailDocente, String nombreDocente, String apellidoDocente, Boolean estadoDocente, String materiaDocente, String contraseñaDocente){
+    public Docente(Integer idDocente, Integer dniDocente, String emailDocente, String nombreDocente, String apellidoDocente, Boolean estadoDocente, String materiaDocente, String contraseñaDocente, String tipo){
         super();
         this.emailDocente = emailDocente;
         this.idDocente = idDocente;
@@ -62,6 +64,7 @@ public class Docente {
         this.estadoDocente = estadoDocente;
         this.materiaDocente = materiaDocente;
         this.contraseñaDocente = contraseñaDocente;
+        this.tipo = tipo;
     }
 	public Integer getIdDocente() {
 		return idDocente;
@@ -110,6 +113,12 @@ public class Docente {
 	}
 	public void setEmailDocente(String emailDocente) {
 		this.emailDocente = emailDocente;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
     
   

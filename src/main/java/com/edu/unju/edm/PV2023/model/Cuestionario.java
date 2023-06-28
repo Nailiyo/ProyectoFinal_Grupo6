@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,7 @@ public class Cuestionario {
 	//@NotNull(message = "se necesita:puntajeFinal")
 	private Integer puntajeFinal;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	/**@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idPregunta1")
 	//@NotBlank(message= "se necesita: pregunta1")
 	private Pregunta pregunta1;
@@ -58,11 +59,28 @@ public class Cuestionario {
     @JoinColumn(name="idPregunta4")
 	//@NotBlank(message="se necesita: pregunta4")
 	private Pregunta pregunta4;
+	**/
 	
+	@NotBlank(message= "PONELE DESCRIPCION")
+	private String descripcion;
+	
+	@NotBlank(message= "AGREGA TITULO")
+	private String titulo;
 	
 	private Boolean estadoCuestionario;
 	
 	public Cuestionario(){
+		
+	}
+	
+	public Cuestionario(Integer idCuestionario, Docente unDocente, @NotBlank(message = "AGREGA TITULO") String titulo, @NotBlank(message= "PONELE DESCRIPCION") String descripcion, Boolean estadoCuestionario, Integer puntajeFinal) {
+		
+		this.idCuestionario = idCuestionario;
+		this.descripcion  = descripcion;
+		this.estadoCuestionario = estadoCuestionario;
+		this.puntajeFinal = puntajeFinal;
+		this.titulo = titulo;
+		this.unDocente = unDocente;
 		
 	}
 
@@ -85,7 +103,7 @@ public class Cuestionario {
 	}
 
 
-	public Pregunta getPregunta1() {
+	/**public Pregunta getPregunta1() {
 		return pregunta1;
 	}
 
@@ -122,7 +140,7 @@ public class Cuestionario {
 
 	public void setPregunta4(Pregunta pregunta4) {
 		this.pregunta4 = pregunta4;
-	}
+	}**/
 
 
 	public Boolean getEstadoCuestionario() {
@@ -142,6 +160,26 @@ public class Cuestionario {
 
 	public void setUnDocente(Docente unDocente) {
 		this.unDocente = unDocente;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	

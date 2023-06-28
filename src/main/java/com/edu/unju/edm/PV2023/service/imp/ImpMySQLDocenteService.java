@@ -7,6 +7,7 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -27,7 +28,11 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	@Override
 	public void cargarDocente(Docente unDocente) {
 		
+		unDocente.setTipo("ADMIN");
 		unDocente.setEstadoDocente(true);
+		String pw = unDocente.getContraseñaDocente();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+		unDocente.setContraseñaDocente(encoder.encode(pw));
 		docenteRepository.save(unDocente);
 		
 	}

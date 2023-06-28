@@ -1,6 +1,9 @@
 package com.edu.unju.edm.PV2023.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.juli.logging.Log;
@@ -11,10 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.unju.edm.PV2023.model.CuestionarioPregunta;
+import com.edu.unju.edm.PV2023.repository.CuestionarioPreguntaRepository;
+import com.edu.unju.edm.PV2023.repository.CuestionarioRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioPreguntaService;
 import com.edu.unju.edm.PV2023.service.ICuestionarioService;
 import com.edu.unju.edm.PV2023.service.IPreguntaService;
@@ -33,39 +40,38 @@ public class cuestionarioPreguntaController {
 	@Autowired
 	ICuestionarioService cuestionarioService;
 	@Autowired
+	CuestionarioPreguntaRepository cuestionarioPreguntaRepository;
+	@Autowired
 	CuestionarioPregunta unCuestionarioPregunta;
+	@Autowired
+	CuestionarioRepository cuestionarioRepository;
 	
-	@GetMapping("/CuestionarioPregunta")
-	public ModelAndView cargarCuestionarioPregunta() {
-		ModelAndView modelAndView= new ModelAndView("cargarCuestionario");
+	@GetMapping("/cargarCuestionarioPregunta/{idCuestionario}")
+	public ModelAndView cargarCuestionarioPregunta(@PathVariable(name="idCuestionario") Integer idCuestionario) {
+		ModelAndView modelAndView= new ModelAndView("cargarCuestionarioPregunta");
 		modelAndView.addObject("cuestionarioPregunta", unCuestionarioPregunta);
-		modelAndView.addObject("cuestionario",cuestionarioService.listarCuestionarios());
-		modelAndView.addObject("pregunta", preguntaService.listarPreguntas());
+		modelAndView.addObject("cuestionario", cuestionarioRepository.findById(idCuestionario).get());
+		/**modelAndView.addObject("listadoSeleccionadas", cuestionarioPreguntaService.ListarPreguntasDeUnCuestionario(idCuestionario));
+		modelAndView.addObject("listadoDeNoSeleccionadas", cuestionarioPreguntaService.ListarPreguntasNoSeleccionadas(cuestionarioPreguntaService.ListarPreguntasDeUnCuestionario(idCuestionario), preguntaService.listarPreguntas()));
+		modelAndView.addObject("listadoPreguntas", preguntaService.listarPreguntas());
+		**/
+		modelAndView.addObject("listadoPreguntas", preguntaService.listarPreguntas());
 		return modelAndView;
 		
 	}
 	
-	@PostMapping("/cargarCuestionarioPregunta")
-	public ModelAndView guardarCuestionarioPregunta(@Valid @ModelAttribute("cuestionarioPregunta") CuestionarioPregunta unCuestionarioPreguntaConDatos, BindingResult resultado) {
+	@PostMapping("/guardarCuestionarioPregunta/{idCuestionario}")
+	public ModelAndView guardarCuestionarioPregunta(@ModelAttribute("cuestionarioPregunta") CuestionarioPregunta unCuestionarioPreguntaConDatos,@PathVariable(name="idCuestionario") Integer idCuestionario) {
+		System.out.println(unCuestionarioPreguntaConDatos.getIdCuestionarioPregunta()+"JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ");
 		
-		if(resultado.hasErrors()) {
-			G6.error(resultado.getAllErrors());
-			ModelAndView modelAndView= new ModelAndView("cargarCuestionario");
-			modelAndView.addObject("cuestionarioPregunta", unCuestionarioPreguntaConDatos);
-			modelAndView.addObject("cuestionario",cuestionarioService.listarCuestionarios());
-			modelAndView.addObject("pregunta", preguntaService.listarPreguntas());
-			return modelAndView;
-		}
+		System.out.println(unCuestionarioPreguntaConDatos.getPregunta()+ "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+		//cuestionarioPreguntaService.cargarCuestionarioPregunta(unCuestionarioPreguntaConDatos, idCuestionario);
+		ModelAndView mav = new ModelAndView("mostrarCuestionarioPregunta");
+		mav.addObject("cuestionarioPreguntaListado",cuestionarioPreguntaService.listarCuestionarioPreguntas());
+        return mav;
 		
-		ModelAndView modelAndView=new ModelAndView("mostrarCuestionario");
 		
-		try {
-			cuestionarioPreguntaService.cargarCuestionarioPregunta(unCuestionarioPreguntaConDatos);
-		}catch(Exception e) {
-			modelAndView.addObject("cargarCuestionarioPreguntaErrorMessage", e.getMessage());
-		}
+		//return "redirect:/listadoCuestionario";
 		
-		modelAndView.addObject("cuestionarioPreguntaListado", cuestionarioPreguntaService.listarCuestionarioPreguntas());
-		return modelAndView;
 	}
 }

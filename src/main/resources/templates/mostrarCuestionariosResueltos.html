@@ -92,41 +92,35 @@
       }
     </style>
 </head>
-
 <body>
-	<div class="header">
+	 <div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   	</div>
-    <h1>Mostrar Cuestionario Lindo</h1>
+	 	<div class="cards">
+			<div class="conteiner-fluid">
+				<div class="row" style="margin-left:0; justify-content: center; margin-right:0;">
+					<div class="card" style="width: 18rem; margin:5px;" th:each="cuestionarioAlumno: ${cuestionarioAlumnoListado}" >
+					 	 <div class="card-body">
+						    <h5 class="card-title" th:text="${cuestionarioAlumno.unCuestionario.titulo}"></h5>
+						    <h6 class="card-subtitle mb-2 text-body-secondary" th:text="${cuestionarioAlumno.unAlumno.nombreAlumno + ' ' + cuestionarioAlumno.unAlumno.apellidoAlumno}"></h6>
+						    <p class="card-text" th:text="${cuestionarioAlumno.fechaCompletado}" ></p>
+						    <p class="card-text" th:text="${cuestionarioAlumno.puntajeLogrado} + ' / '+ ${cuestionarioAlumno.unCuestionario.puntajeFinal}" ></p>
+						    
+					 	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 
-     <table> 
-        <tr>
-        <td><b> Id </b> </td>
-        <td><b> Titulo</b> </td>
-        <td><b> Descripcion </b> </td>
-        <td><b> Profesor </b> </td>
-        </tr>
-        <tr>
-        </tr> 
-         <tr th:each="cuestionario : ${cuestionarioListado}"> 
-         		  <td th:text="${cuestionario.idCuestionario}"></td>
-                  <td th:text="${cuestionario.titulo}"></td>
-                  <td th:text="${cuestionario.descripcion}"></td>
-                  <!-- <td th:text="${cuestionario.unDocente.nombreDocente + ' ' + cuestionario.unDocente.apellidoDocente}"></td>  -->
-                  
-                  <td> 
-                  		<a class="btn btn-primary" th:href="@{'/cargarCuestionarioPregunta/' + ${cuestionario.idCuestionario}}">Añadir</a>
-                         <button class="btn btn-primary" type="submit">Editar</button> 
-                         <button class="btn btn-primary" type="submit">Borrar</button>
-                 </td>
-    </table>
-</body>
+	<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+
 <footer>
   <div class="footer-container">
     <div class="footer-row">
-      <div class="footer-column"><br><br>
+      <div class="footer-column">
         <h3>Virtual EDM</h3>
         <p>Un lugar para aprender y crecer juntos</p>
       </div>
@@ -154,4 +148,6 @@
     </div>
   </div>
 </footer>
+
+</body>
 </html>

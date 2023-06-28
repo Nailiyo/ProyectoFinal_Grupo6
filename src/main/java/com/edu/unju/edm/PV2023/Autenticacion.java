@@ -16,18 +16,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Autenticacion implements AuthenticationSuccessHandler {
-
+	
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 		
 		Boolean tipoDocente=false, tipoAdmin=false;
 		
 		Collection<?extends GrantedAuthority> autorizaciones = authentication.getAuthorities();
 		for(GrantedAuthority grantedAuthority:autorizaciones) {
-			if(grantedAuthority.getAuthority().equals("DOCENTE")) {
+			if(grantedAuthority.getAuthority().equals("USUARIO")) {
 				tipoDocente=true;
 				break;
 			}else {
@@ -38,13 +37,12 @@ public class Autenticacion implements AuthenticationSuccessHandler {
 			}
 		}
 		if(tipoDocente) {
-			redirectStrategy.sendRedirect(request, response, "/cargarDocente");
+			redirectStrategy.sendRedirect(request, response, "/principal");
 		}else {
 			if(tipoAdmin) {
-				redirectStrategy.sendRedirect(request, response, "/");
+				redirectStrategy.sendRedirect(request, response, "/principal");
 			}
 		}
 		
 	}
-	
 }

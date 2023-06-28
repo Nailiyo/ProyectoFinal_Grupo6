@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Carga de Cuestionario</title>
+  <title>Carga de Docente</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <style>
     body {
@@ -111,55 +111,47 @@
     }
   </style>
 </head>
-
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
 <body>
 
-<div class="header">
-    <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
-    <h1 class="header-text">Virtual-EDM</h1>
-    <a href="/" class="header-button">Volver al inicio</a>
-  </div>
 
-<div class="container-fluid">
-		<div class="row">
-			<div class="col-3">
-			</div>
-			<div class="col-6 cuestionarioAlumno">
-				<h1>RESOLVE EL CUESTIONARIO CHADSON</h1>
-				<form th:object="${cuesAlumno}" th:action="@{/guardarCuestionarioAlumno}" method="post">
+	<h3>Agregando Preguntas</h3>
+	
+	
+	<form th:object="${cuestionarioPregunta}" th:action="@{'/guardarCuestionarioPregunta/' + ${idCuestionario}}" method="post">
 					
 					<div class="form-group mb-3">
-						
-						<label class="custom-label">Alumno</label>
-						<select class="form-control" th:field="*{unAlumno.idAlumno}">
-						<option th:each="unAlumno:${alumnoListado}" th:value="${unAlumno.idAlumno}" th:text="${unAlumno.apellidoAlumno}"></option>
+					
+						<label class="custom-label">Preguntas Seleccionadas</label>
+						<select class="form-control" th:field="*{pregunta}">
+						<option th:each="pregunta:${listadoPreguntas}" th:value="${pregunta.idPregunta}" 
+						th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
-						
-						<label class="custom-label">Cuestionario</label>
-						<select class="form-control" th:field="*{unCuestionario.idCuestionario}">
-						<option th:each="unCuestionario:${cuestionarioListado}" th:value="${unCuestionario.idCuestionario}" th:text="${unCuestionario.idCuestionario}"></option>
-						</select>
-						<br><br>
-						
-						<label class="custom-label">Fecha Completado</label>
-						<input class="form-control" type="date" th:field="*{fechaCompletado}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('fechaCompletado')}" th:errors="*{fechaCompletado}"></div>
-						<br>
-						
-						<label class="custom-label">Puntaje Logrado</label>
-						<input class="form-control" type="number" th:field="*{puntajeLogrado}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntajeLogrado')}" th:errors="*{puntajeLogrado}"></div>
-						<br>
-						
-						<input class="btn btn-registrar" type="submit" value="SUBE LOS DATOS PERRO">
+					
+						<input class="btn btn-registrar" type="submit" value="REGISTRAR">
 						<input class="btn btn-registrar" type="reset" value="RESETEAR">
+						
+						
+						
 						
 	</div>
 	</form>
-	</div>
-	</div>					
-</div>
+	
+	<!-- <form th:object="${cuestionarioPregunta}" th:action="@{'/guardarCuestionarioPregunta/' + ${idCuestionario}}" method="post">
+	 <select th:field="*{pregunta}" required>
+	 <br><br>
+	                <option value="">Seleccionar pregunta...</option>
+	                <option th:each="pregunta : ${listadoPreguntas}" th:value="${pregunta}" th:text="${pregunta.descripcion}"></option>
+	            </select>
+	            
+	            <input type="submit" value="REGISTRAR">
+
+</form> -->
+
+
 </body>
 <footer>
   <div class="footer-container">

@@ -18,14 +18,16 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private Autenticacion autenticacion;
 	
-	String[] resources = new String [] {"/include/**", "/css/**", "/icons/**","/img/**", "/js/**", "/layer/**","/webjars/**"};
+	String[] resources = new String [] { "/include/**","/css/**","/icons/**","/img/**","/imges/**","/js/**","/layer/**", "/webjars/**"};
 	
 	protected void configure(HttpSecurity http) throws Exception{
 		http
 			.authorizeRequests()
 				.antMatchers(resources).permitAll()
-				.antMatchers("/", "/index", "/cargarAlumno", "/cuestionarioAlumno").permitAll()
-				.antMatchers("/mostrarDocente", "/mostrarCuestionario", "/cargarDocente", "/cargarCuestionario", "/cargarPregunta").hasAuthority("ADMIN")
+				.antMatchers("/","index","/login","/home","/principal", "/cargarAlumno", "/guardarAlumno", "listaDeAlumnos", "/eliminarAlumno/{idAlumno}", "/modificarAlumno/{idAlumno}", "/cargarDocente", "/guardarDocente", "/listaDeDocentes", "/eliminarDocente/{idDocente}", "/modificarDocente/{idDocente}", "/cargarPregunta", "/guardarPregunta", "/eliminarPregunta/{idPregunta}", "/modificarPregunta/{idPregunta}", "/cargarCuestionario", "/listadoCuestionario", "/guardarCuestionario", "/cuestionarioConPreguntas/{idCuestionario}", "/cuestionarioPregunta/{idCuestionario}", "/cargarCuestionarioPregunta/{idCuestionario}", "/hacerAlumnoCuestionario", "/resultadoDeCuestionario/{idCuestionario}", "/resolverCuestionario/{idCuestionario}", "/cuestionariosRealizados").permitAll()
+				.antMatchers("/principal", "/cargarAlumno", "/guardarAlumno", "/eliminarAlumno/{idAlumno}", "/modificarAlumno/{idAlumno}", "/cargarDocente", "/guardarDocente", "/eliminarDocente/{idDocente}", "/modificarDocente/{idDocente}", "/cargarPregunta", "/guardarPregunta", "/eliminarPregunta/{idPregunta}", "/modificarPregunta/{idPregunta}", "/cargarCuestionario", "/guardarCuestionario", "/cuestionarioConPreguntas/{idCuestionario}", "/cuestionarioPregunta/{idCuestionario}", "/cargarCuestionarioPregunta/{idCuestionario}").hasAuthority("ADMIN")
+				//.antMatchers().hasAuthority("ADMIN")
+				//.antMatchers("/hacerAlumnoCuestionario").hasAuthority("USUARIO")
 				.anyRequest().authenticated()	
 				.and()
 			.formLogin()

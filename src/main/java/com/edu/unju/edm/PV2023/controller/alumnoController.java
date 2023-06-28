@@ -60,6 +60,15 @@ public class alumnoController {
         return listarAlumnos;
     }
     
+    @GetMapping("/listaDeAlumnos")
+	public ModelAndView mostrarAlumnos(){
+		ModelAndView listaDeAlumnos = new ModelAndView("vistaAlumno");
+		listaDeAlumnos.addObject("alumnoListado", unAlumno);
+		listaDeAlumnos.addObject("alumnoListado", alumnoService.listarAlumnos());
+		return listaDeAlumnos;
+	}
+
+    
     @GetMapping("/eliminarAlumno/{idAlumno}")
 	@ResponseBody
 	public ModelAndView borrarAlumno(@PathVariable Integer idAlumno) {
@@ -92,9 +101,9 @@ public class alumnoController {
 	}
 	
 	@PostMapping(value="/modificarAlumno")
-	public ModelAndView modificarAlumno(@ModelAttribute ("cargarEstudiante") Alumno nuevoAlumno) throws IOException {
+	public ModelAndView modificarAlumno(@ModelAttribute ("cargarAlumno") Alumno nuevoAlumno) throws IOException {
 		
-		ModelAndView listadoFinal= new ModelAndView("mostrarEstudiante");
+		ModelAndView listadoFinal= new ModelAndView("mostrarAlumno");
 		
 		G6.warn("Mostrando el nuevo producto " + nuevoAlumno.getNombreAlumno());
 		

@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Mostrar Estudiantes</title>
+    <title>Mostrar Docentes</title>
      <link href="css/styles.css" rel="stylesheet" type="text/css">
     <style>
       body {
@@ -10,8 +10,8 @@
         margin: 0;
         padding: 0;
       }
-      
-      .header {
+	  
+	  .header {
       background-color: #fff;
       padding: 10px;
       display: flex;
@@ -45,7 +45,7 @@
     .header-button:hover {
       background-color: #005c89;
     }
-
+    
       h1 {
         text-align: center;
         margin-top: 20px;
@@ -93,40 +93,34 @@
     </style>
 </head>
 
+
 <body>
 	<div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   	</div>
-    <h1>Mostrar Cuestionario Lindo</h1>
+<h1>Mostrar Docentes</h1>
 
-     <table> 
+    <table> 
         <tr>
-        <td><b> Id </b> </td>
-        <td><b> Titulo</b> </td>
-        <td><b> Descripcion </b> </td>
-        <td><b> Profesor </b> </td>
+        <td><b> Nombre </b> </td>
+        <td><b> Apellido </b> </td>
+        <td><b> EMAIL </b> </td>
         </tr>
         <tr>
         </tr> 
-         <tr th:each="cuestionario : ${cuestionarioListado}"> 
-         		  <td th:text="${cuestionario.idCuestionario}"></td>
-                  <td th:text="${cuestionario.titulo}"></td>
-                  <td th:text="${cuestionario.descripcion}"></td>
-                  <!-- <td th:text="${cuestionario.unDocente.nombreDocente + ' ' + cuestionario.unDocente.apellidoDocente}"></td>  -->
-                  
-                  <td> 
-                  		<a class="btn btn-primary" th:href="@{'/cargarCuestionarioPregunta/' + ${cuestionario.idCuestionario}}">Añadir</a>
-                         <button class="btn btn-primary" type="submit">Editar</button> 
-                         <button class="btn btn-primary" type="submit">Borrar</button>
-                 </td>
+         <tr th:each="docente : ${docenteListado}"> 
+                  <td th:text="${docente.nombreDocente}"></td> 
+                  <td th:text="${docente.apellidoDocente}"></td>
+                  <td th:text="${docente.emailDocente}"></td>
     </table>
+
 </body>
 <footer>
   <div class="footer-container">
     <div class="footer-row">
-      <div class="footer-column"><br><br>
+      <div class="footer-column">
         <h3>Virtual EDM</h3>
         <p>Un lugar para aprender y crecer juntos</p>
       </div>

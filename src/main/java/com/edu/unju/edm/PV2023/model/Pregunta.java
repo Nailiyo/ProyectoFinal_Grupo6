@@ -47,14 +47,14 @@ public class Pregunta {
     
     private Integer opcionCorrecta;
     
-    @NotNull(message="CUANTO PUNTOS VALE")
-    private Integer puntaje;
+    /**@NotNull(message="CUANTO PUNTOS VALE")
+    private Integer puntaje;**/
     
     private Boolean estadoPregunta;
     
-    private String nivelPregunta;
+    private Integer nivelPregunta;
     public Pregunta(){}
-    public Pregunta(Integer idPregunta,Integer puntaje,String nivelPregunta, String descripcion, String opcion1,
+    public Pregunta(Integer idPregunta,Integer puntaje,Integer nivelPregunta, String descripcion, String opcion1,
                      String opcion2, String opcion3, String opcion4, Integer opcionCorrecta, Boolean estadoPregunta){
         this.idPregunta = idPregunta;
         this.descripcion = descripcion;
@@ -64,15 +64,15 @@ public class Pregunta {
         this.opcion4 = opcion4;
         this.opcionCorrecta = opcionCorrecta;
         this.estadoPregunta = estadoPregunta;
-        this.puntaje = puntaje;
+        //this.puntaje = puntaje;
         this.nivelPregunta = nivelPregunta;
     }
 
-    public String getNivelPregunta() {
+    public Integer getNivelPregunta() {
         return nivelPregunta;
     }
 
-    public void setNivelPregunta(String nivelPregunta) {
+    public void setNivelPregunta(Integer nivelPregunta) {
         this.nivelPregunta = nivelPregunta;
     }
 
@@ -136,12 +136,12 @@ public class Pregunta {
         return estadoPregunta;
     }
 
-    public Integer getPuntaje() {
+    /**public Integer getPuntaje() {
         return puntaje;
     }
     public void setPuntaje(Integer puntaje){
         this.puntaje = puntaje;
-    }
+    }**/
 
     public void setEstadoPregunta(Boolean estadoPregunta) {
         this.estadoPregunta = estadoPregunta;

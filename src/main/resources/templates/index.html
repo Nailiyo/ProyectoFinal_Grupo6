@@ -2,8 +2,114 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Menu</title>
+  <title>SUPER REGISTRACION</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: #eaf2f8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+	.header {
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: auto;
+    }
+    
+    .header-text {
+      font-family: cursive;
+      color: #005c89;
+      font-size: 23px;
+      margin: 0;
+      margin-left: 80px;
+    }
+
+    .header-button {
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-button:hover {
+      background-color: #005c89;
+    }
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .docente {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      color: #0083ca;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .custom-label {
+      font-weight: bold;
+      color: #0083ca;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+     .checkbox-input {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+    /* Estilos para los botones */
+    .btn-registrar {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-registrar:hover {
+      background-color: #005c89;
+    }
+  </style>
 </head>
 <section>
   <span>Virtual-EDM</span>
@@ -11,23 +117,44 @@
 <header>
   <h1>Virtual-EDM</h1>
   <nav>
-  	<a href="/">Registrarse Madafaka</a>
-    <a href="/cargarDocente">Cargar Docente</a>
-    <a href="/cargarAlumno">Cargar Estudiante</a>
-    <a href="/cargarPregunta">Cargar Pregunta</a>
-    <a href="/cargarCuestionario">Crear Cuestionario</a>
-    <a href="/hacerAlumnoCuestionario">Resolver Cuestionario</a>
+  	
+  	<h3>LA REGISTRACION</h3>
+			<form th:object="${docenteParaLoguear}" th:action="@{/principal}" method="post">
+			<div class="mb-3">
+  				<label for="usuario" class="form-label">Usuario</label>
+  				<input type="text" class="form-control" id="usuario" th:field="*{idDocente}" name="usuario">
+			</div>
+			<div class="mb-3">
+  				<label for="contraseña" class="form-label">Contraseña</label>
+  				<input type="password" class="form-control" id="contraseña" th:field="*{contraseñaDocente}" name="password">
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Ingresar</button>
+			
+		</form>
+		<!-- ESTAN COMENTADOS -->
+	<!-- <a href="/cargarDocente">Crear Docente</a>
+  	<a href="/cargarAlumno">Crear Alumno</a>
+  	<a href="/cargarPregunta">Crear Pregunta</a>
+  	<a href="/cargarCuestionario">Crear Cuestionario</a>
+  	 -->
+  	<a href="/listaDeAlumnos">Lista de Alumnos</a>
+    <a href="/listaDeDocentes">Lista de Docentes</a>
+    <a href="/hacerAlumnoCuestionario">Tomar Cuestionario</a>
+    <a href="/cuestionariosRealizados">Cuestionarios Hechos</a>
+    <a href="/listadoCuestionario">Lista de Cuestionarios</a>
   </nav>
 </header>
-<article>
-  <h1>Sobre nosotros</h1>
+<!-- <article>
+   <h1>Sobre nosotros</h1>
   <p>Somos un equipo comprometido con la educación y el aprendizaje. Nuestra misión es brindar una plataforma interactiva y accesible que promueva el conocimiento y la excelencia académica. Nos esforzamos por proporcionar herramientas innovadoras que faciliten el proceso de enseñanza y aprendizaje, tanto para docentes como para estudiantes.</p>
   <p>En nuestra plataforma, encontrarás recursos educativos de calidad, diseñados para abarcar diversas áreas de estudio. Nuestro objetivo principal es fomentar el crecimiento intelectual y el desarrollo de habilidades en un entorno virtual dinámico y colaborativo.</p>
   <p>Valoramos la participación activa y el compromiso con la educación. Estamos dedicados a ayudar a los docentes a crear experiencias de aprendizaje enriquecedoras y a los estudiantes a alcanzar su máximo potencial. Únete a nosotros en este viaje educativo y descubre todo lo que nuestra plataforma tiene para ofrecer.</p>
   <p></p>		
 	<img class="imagen-educativa" src="/images/calidad-educativa.jpg" alt="Imagen educativa">
 </article>
-<footer>
+-->
+<!-- <footer>
   <div class="footer-container">
     <div class="footer-row">
       <div class="footer-column">
@@ -58,4 +185,5 @@
     </div>
   </div>
 </footer>
+ -->
 </html>

@@ -104,17 +104,15 @@
      <table> 
         <tr>
         <td><b> Id </b> </td>
-        <td><b> Titulo</b> </td>
-        <td><b> Descripcion </b> </td>
-        <td><b> Profesor </b> </td>
+        <td><b> Pregunta </b> </td>
+        <td><b> Cuestionario </b> </td>
         </tr>
         <tr>
         </tr> 
-         <tr th:each="cuestionario : ${cuestionarioListado}"> 
-         		  <td th:text="${cuestionario.idCuestionario}"></td>
-                  <td th:text="${cuestionario.titulo}"></td>
-                  <td th:text="${cuestionario.descripcion}"></td>
-                  <!-- <td th:text="${cuestionario.unDocente.nombreDocente + ' ' + cuestionario.unDocente.apellidoDocente}"></td>  -->
+         <tr th:each="cuestionarioPregunta : ${cuestionarioPreguntaListado}"> 
+         		  <td th:text="${cuestionarioPregunta.idCuestionarioPregunta}"></td>
+                  <td th:text="${cuestionarioPregunta.pregunta.descripcion}"></td>
+                  <td th:text="${cuestionarioPregunta.cuestionario.titulo}"></td>
                   
                   <td> 
                   		<a class="btn btn-primary" th:href="@{'/cargarCuestionarioPregunta/' + ${cuestionario.idCuestionario}}">Añadir</a>

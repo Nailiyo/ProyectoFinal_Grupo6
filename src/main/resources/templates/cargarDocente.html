@@ -125,7 +125,7 @@
 			</div>
 			<div class="col-6 docente">
 				<h3>Cargar Docente</h3>
-				<form th:object="${docente}" th:action="@{/guardarDocente}" method="post">
+				<form th:object="${docente}" th:action="${band}?@{/modificarDocente}:@{/guardarDocente}" method="post">
 					<div class="form-group mb-3">
 						<!--<label class="custom-label">idDocente</label>
 						<input class="form-control" type="number" th:field="*{idDocente}"><br>-->

@@ -129,8 +129,20 @@
 				<form th:object="${cuestionario}" th:action="@{/guardarCuestionario}" method="post">
 					
 					<div class="form-group mb-3">
+					
+						<label class="custom-label">Titulo</label>
+						<input type="text" th:field="*{titulo}" class="form-control" required/><br/>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+						<br>
+						<br><br>
 						
-						<label class="custom-label">Pregunta 1</label>
+						<label class="custom-label">Descripcion</label>
+						<input type="text" th:field="*{descripcion}" class="form-control" required/><br/>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+						<br>
+						<br><br>
+						
+						<!-- <label class="custom-label">Pregunta 1</label>
 						<select class="form-control" th:field="*{pregunta1.idPregunta}">
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" 
 						th:text="${pregunta.descripcion}"></option>
@@ -153,19 +165,19 @@
 						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
 						</select>
 						<br><br>
-						
+						 -->
 						<label class="custom-label">Docente</label>
 						<select class="form-control" th:field="*{unDocente}">
-						<option th:each="unDocente:${docenteListado}" th:value="${unDocente.idDocente}" 
+						<option th:each="unDocente:${cuestionarioListado}" th:value="${unDocente.idDocente}" 
 						th:text="${unDocente.apellidoDocente}"></option>
 						</select>
 						<br><br>
 						
-						<label class="custom-label">Puntaje TOTAL</label>
+						<!-- <label class="custom-label">Puntaje TOTAL</label>
 						<input class="form-control" type="number" th:field="*{puntajeFinal}"><br>
 						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntajeFinal')}" th:errors="*{puntajeFinal}"></div>
 						<br>
-							
+						 -->	
 						<input class="btn btn-registrar" type="submit" value="REGISTRAR">
 						<input class="btn btn-registrar" type="reset" value="RESETEAR">
 						

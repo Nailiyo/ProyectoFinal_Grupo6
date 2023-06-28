@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>SUPER REGISTRACION</title>
+  <title>Carga de Cuestionario</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <style>
     body {
@@ -111,68 +111,28 @@
     }
   </style>
 </head>
-
 <body>
-	 <div class="header">
+
+<div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   </div>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-3">
-			</div>
-			<div class="col-6 docente">
-				<h3>LA REGISTRACION</h3>
-				<form th:object="${docente}" th:action="@{/login}" method="post">
-					<div class="form-group mb-3">
-					
-						<label class="custom-label">Usuario</label>
-						<input class="form-control" type="text" th:field="*{idDocente}" name="idDocente"><br><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('idDocente')}" th:errors="*{idDocente}"></div>
-						
-						<label class="custom-label">Contraseña</label>
-						<input class="form-control" type="text" th:field="*{contraseñaDocente}" name="contraseñaDocente"><br><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaDocente')}" th:errors="*{contraseñaDocente}"></div>
-						
-						<!-- <label class="custom-label">Apellido</label>
-						<input class="form-control" type="text" th:field="*{apellidoDocente}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('apellidoDocente')}" th:errors="*{apellidoDocente}"></div>
-						
-						<label class="custom-label">DNI</label>
-						<input class="form-control" type="number" th:field="*{dniDocente}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('dniDocente')}" th:errors="*{dniDocente}"></div>
-						
-						<label class="custom-label">Materia</label>
-						<input class="form-control" type="text" th:field="*{materiaDocente}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('materiaDocente')}" th:errors="*{materiaDocente}"></div>
-						
-						<label class="custom-label">Email</label>
-						<input class="form-control" type="email" th:field="*{emailDocente}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('emailDocente')}" th:errors="*{emailDocente}"></div>
-						
-						<label class="custom-label">Contraseña</label>
-						<input class="form-control" type="password" th:field="*{contraseñaDocente}"><br>
-						<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaDocente')}" th:errors="*{contraseñaDocente}"></div>
-						
-						
-						<!--<label class="custom-label">Estado</label>
-           				<input class="checkbox-input" type="checkbox" th:field="*{estadoDocente}"><br>-->
-						
 
-						<br><input class="btn btn-registrar" type="submit" value="REGISTRAR">
-						 
+  <div class="container col-8">
+			
+	<div class="card" style="width: 18rem;" th:each="cuestionario : ${cuestionarios}" >
+  <div class="card-body">
+    <h5 class="card-title" th:text="${cuestionario.titulo}"></h5>
+  <!-- <h6 class="card-subtitle mb-2 text-body-secondary" th:text="${cuestionario.unDocente.nombreDocente + cuestionario.unDocente.apellidoDocente}"></h6> -->  
+    <p class="card-text" th:text="${cuestionario.descripcion}" ></p>
+    <a class="btn btn-primary" th:href="@{'/resolverCuestionario/' + ${cuestionario.idCuestionario}}" >Resolver</a>
+  </div>
+</div>
+</div>
 
-					</div>
-				</form>
-			</div>
-			<div class="col-3">
-			</div>
-		</div>
-	</div>
-	
-</body>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+
 <footer>
   <div class="footer-container">
     <div class="footer-row">
@@ -204,4 +164,6 @@
     </div>
   </div>
 </footer>
+
+</body>
 </html>
