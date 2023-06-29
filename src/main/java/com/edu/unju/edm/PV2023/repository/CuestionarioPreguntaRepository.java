@@ -6,10 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.edu.unju.edm.PV2023.model.Cuestionario;
+import com.edu.unju.edm.PV2023.model.CuestionarioPregunta;
 
 @Repository
-public interface CuestionarioRepository extends CrudRepository<Cuestionario, Integer>{
-	
-	ArrayList<Cuestionario> findByEstadoCuestionario (Boolean estadoCuestionario);
+public interface CuestionarioPreguntaRepository extends CrudRepository<CuestionarioPregunta, Integer>{
+
+	ArrayList<CuestionarioPregunta> findAllByCuestionario(Cuestionario unCuestionario);
 	
 }

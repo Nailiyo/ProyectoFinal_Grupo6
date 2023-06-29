@@ -3,10 +3,10 @@ package com.edu.unju.edm.PV2023.service.imp;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -22,12 +22,15 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	@Autowired
 	DocenteRepository docenteRepository;
 	
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLDocenteService.class);
 
 	@Override
 	public void cargarDocente(Docente unDocente) {
 		
+		unDocente.setTipo("ADMIN");
 		unDocente.setEstadoDocente(true);
+		String pw = unDocente.getContraseñaDocente();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(4);
+		unDocente.setContraseñaDocente(encoder.encode(pw));
 		docenteRepository.save(unDocente);
 		
 	}
@@ -39,7 +42,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	}
 
 	@Override
-	public Docente mostrarUnDocente(Integer idDocente) {
+	public Docente mostrarDocente(Integer idDocente) {
 		// TODO Auto-generated method stub
 		Optional<Docente> auxiliar = Optional.of(new Docente());
 		auxiliar = docenteRepository.findById(idDocente);
@@ -53,13 +56,13 @@ public class ImpMySQLDocenteService implements IDocenteService{
 	}
 
 	@Override
-	public Docente modificarUnDocente(Integer idDocente) {
+	public Docente modificarDocente(Integer idDocente) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public void eliminarDocente(Integer unIdDocente) {
-		//productoRepository.deleteById(unCodigo);
+		//docenteRepository.deleteById(unIdDocente);
 		Optional<Docente> auxiliar=Optional.of(new Docente());
 		auxiliar= docenteRepository.findById(unIdDocente);
 		auxiliar.get().setEstadoDocente(false);

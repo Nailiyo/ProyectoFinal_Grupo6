@@ -111,50 +111,45 @@
     }
   </style>
 </head>
-<section>
-  <span>Virtual-EDM</span>
-</section>
-<header>
-  <h1>Virtual-EDM</h1>
-  <nav>
-  	
-  	<h3>LA REGISTRACION</h3>
-			<form th:object="${docenteParaLoguear}" th:action="@{/principal}" method="post">
-			<div class="mb-3">
-  				<label for="usuario" class="form-label">Usuario</label>
-  				<input type="text" class="form-control" id="usuario" th:field="*{idDocente}" name="usuario">
-			</div>
-			<div class="mb-3">
-  				<label for="contraseña" class="form-label">Contraseña</label>
-  				<input type="password" class="form-control" id="contraseña" th:field="*{contraseñaDocente}" name="password">
-			</div>
-			
-			<button type="submit" class="btn btn-primary">Ingresar</button>
-			
-		</form>
-		<!-- ESTAN COMENTADOS -->
-	<!-- <a href="/cargarDocente">Crear Docente</a>
-  	<a href="/cargarAlumno">Crear Alumno</a>
-  	<a href="/cargarPregunta">Crear Pregunta</a>
-  	<a href="/cargarCuestionario">Crear Cuestionario</a>
-  	 -->
-  	<a href="/listaDeAlumnos">Lista de Alumnos</a>
-    <a href="/listaDeDocentes">Lista de Docentes</a>
-    <a href="/hacerAlumnoCuestionario">Tomar Cuestionario</a>
-    <a href="/cuestionariosRealizados">Cuestionarios Hechos</a>
-    <a href="/listadoCuestionario">Lista de Cuestionarios</a>
-  </nav>
-</header>
-<!-- <article>
-   <h1>Sobre nosotros</h1>
-  <p>Somos un equipo comprometido con la educación y el aprendizaje. Nuestra misión es brindar una plataforma interactiva y accesible que promueva el conocimiento y la excelencia académica. Nos esforzamos por proporcionar herramientas innovadoras que faciliten el proceso de enseñanza y aprendizaje, tanto para docentes como para estudiantes.</p>
-  <p>En nuestra plataforma, encontrarás recursos educativos de calidad, diseñados para abarcar diversas áreas de estudio. Nuestro objetivo principal es fomentar el crecimiento intelectual y el desarrollo de habilidades en un entorno virtual dinámico y colaborativo.</p>
-  <p>Valoramos la participación activa y el compromiso con la educación. Estamos dedicados a ayudar a los docentes a crear experiencias de aprendizaje enriquecedoras y a los estudiantes a alcanzar su máximo potencial. Únete a nosotros en este viaje educativo y descubre todo lo que nuestra plataforma tiene para ofrecer.</p>
-  <p></p>		
-	<img class="imagen-educativa" src="/images/calidad-educativa.jpg" alt="Imagen educativa">
-</article>
--->
-<!-- <footer>
+<body>
+	
+	<div class="header">
+    <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
+    <h1 class="header-text">Virtual-EDM</h1>
+    <a href="/" class="header-button">Volver al inicio</a>
+  </div>
+	
+	<div class="container px-5">
+    	<div class="row gx-5 align-items-center justify-content-center">
+    		<div class="col-lg-8 col-xl-7 col-xxl-6">
+    			<div class="my-5 text-center text-xl-start">
+                	<h1 class="display-5 fw-bolder mb-2">SUPER CUESTIONARIOS</h1>
+                	<p class="lead fw-normal mb-4">PUEDES HACER CUESTIONARIOS CUANDO QUIERAS.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+	                    <a class="btn btn-primary btn-warning px-4 me-sm-3" href="/cargarPregunta">Crea tus primeras preguntas</a>
+                     </div>
+                 </div>
+              </div>
+         	<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="/images/LogoGrande.jpg" alt="..."></div>
+      	 </div>
+      	 
+      	 <div class="container col-lg-12 mx-auto p-4 rounded-5 bg-secondary bg-opacity-10">
+	<div class="button-group text-center">
+	<a class="btn btn-secondary" href="/cargarCuestionario">Crear Cuestionario</a>
+		<a class="btn btn-secondary" href="/cargarAlumno">Registrar Alumno</a>
+		<a class="btn btn-secondary" href="/cargarDocente">Registrar Docente</a>
+		<a class="btn btn-secondary" href="/hacerAlumnoCuestionario">Probar Cuestionarios</a>
+		<a class="btn btn-secondary" href="/cuestionariosRealizados">Resultados de Cuestionarios</a>
+	</div>
+      </div>
+     </div>
+	
+	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	
+<footer>
   <div class="footer-container">
     <div class="footer-row">
       <div class="footer-column">
@@ -180,10 +175,11 @@
     </div>
     <div class="footer-row">
       <div class="footer-column">
-        <p class="text-center">© 2023 VirtualEDM. Todos los derechos reservados.</p>
+        <p class="text-center">© 2023 Virtual. Todos los derechos reservados.</p>
       </div>
     </div>
   </div>
 </footer>
- -->
+	
+</body>
 </html>

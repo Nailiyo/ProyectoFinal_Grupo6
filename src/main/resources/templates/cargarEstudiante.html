@@ -180,7 +180,7 @@
       <div class="col-3"></div>
       <div class="col-6 alumno">
         <h3>Cargar Alumno</h3>
-        <form th:object="${alumno}" th:action="@{/guardarAlumno}" method="post">
+        <form th:object="${alumno}" th:action="${band}?@{/modificarAlumno}:@{/guardarAlumno}" method="post">
           <div class="form-group mb-3">
           
             <!--<label class="custom-label">idAlumno</label>
@@ -188,20 +188,30 @@
             
             <label class="custom-label">Nombre</label>
             <input class="form-control" type="text" th:field="*{nombreAlumno}"><br>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('nombreAlumno')}" th:errors="*{nombreAlumno}"></div>
             
             <label class="custom-label">Apellido</label>
             <input class="form-control" type="text" th:field="*{apellidoAlumno}"><br>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('apellidoAlumno')}" th:errors="*{apellidoAlumno}"></div>
             
             <label class="custom-label">DNI</label>
             <input class="form-control" type="number" th:field="*{dniAlumno}"><br>
+            <div class="alert alert-danger" th:if="${#fields.hasErrors('dniAlumno')}" th:errors="*{dniAlumno}"></div>
+            
+            <label class="custom-label">EMAIL</label>
+			<input class="form-control" type="email" th:field="*{emailAlumno}"><br>
+			<div class="alert alert-danger" th:if="${#fields.hasErrors('emailAlumno')}" th:errors="*{emailAlumno}"></div>
             
             <label class="custom-label">Contraseña</label>
 			<input class="form-control" type="password" th:field="*{contraseñaAlumno}"><br>
+			<div class="alert alert-danger" th:if="${#fields.hasErrors('contraseñaAlumno')}" th:errors="*{contraseñaAlumno}"></div>
             
             <!--<label class="custom-label">Estado</label>
             <input class="checkbox-input" type="checkbox" th:field="*{estadoAlumno}"><br>-->
 
             <input class="btn btn-registrar" type="submit" value="REGISTRAR">
+            <input class="btn btn-registrar" type="reset" value="RESETEAR">
+            
           </div>
         </form>
       </div>

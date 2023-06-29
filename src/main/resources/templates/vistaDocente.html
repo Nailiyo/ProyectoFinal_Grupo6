@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Mostrar Docentes</title>
+     <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+	  
+	  .header {
+      background-color: #fff;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      width: 50px;
+      height: auto;
+    }
+    
+    .header-text {
+      font-family: cursive;
+      color: #005c89;
+      font-size: 23px;
+      margin: 0;
+      margin-left: 80px;
+    }
+
+    .header-button {
+      background-color: #0083ca;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-button:hover {
+      background-color: #005c89;
+    }
+    
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      .btn {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .btn-primary {
+        background-color: #0083ca;
+      }
+
+      .btn-primary:hover {
+        background-color: #005c89;
+      }
+    </style>
+</head>
+
+
+<body>
+	<div class="header">
+    <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
+    <h1 class="header-text">Virtual-EDM</h1>
+    <a href="/" class="header-button">Volver al inicio</a>
+  	</div>
+<h1>Mostrar Docentes</h1>
+
+    <table> 
+        <tr>
+        <td><b> Nombre </b> </td>
+        <td><b> Apellido </b> </td>
+        <td><b> EMAIL </b> </td>
+        </tr>
+        <tr>
+        </tr> 
+         <tr th:each="docente : ${docenteListado}"> 
+                  <td th:text="${docente.nombreDocente}"></td> 
+                  <td th:text="${docente.apellidoDocente}"></td>
+                  <td th:text="${docente.emailDocente}"></td>
+    </table>
+
+</body>
+<footer>
+  <div class="footer-container">
+    <div class="footer-row">
+      <div class="footer-column">
+        <h3>Virtual EDM</h3>
+        <p>Un lugar para aprender y crecer juntos</p>
+      </div>
+      <div class="footer-column">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/cuestionarioAlumno">Cuestionarios</a></li>
+          <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa fa-map-marker"></i> Dirección: Avda Italia Nro 47, San Salvador de Jujuy</li>
+          <li><i class="fa fa-envelope"></i> Email: info@virtualedm.com</li>
+          <li><i class="fa fa-phone"></i> Teléfono: +54 388 912 1831</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-row">
+      <div class="footer-column">
+        <p class="text-center">© 2023 Virtual. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

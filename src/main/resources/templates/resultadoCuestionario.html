@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Resultado del Cuestionario Chad</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+</head>
+<body>
+ 
+ 
+	
+	<div class="container col-lg-4 mx-auto p-4 rounded-5 bg-secondary bg-opacity-10">
+	
+	<div class="card" style="width: 18rem;" >
+	  <div class="card-body">
+	   
+	    <h5 class="card-title" th:text="${nuevoCuestionarioAlumno.unAlumno.nombreAlumno + ' ' +nuevoCuestionarioAlumno.unAlumno.apellidoAlumno}"></h5>
+	    <h6 class="card-subtitle mb-2 text-body-secondary" th:text="${nuevoCuestionarioAlumno.unCuestionario.titulo}"></h6> 
+	    <h1 class="card-text" th:text="${nuevoCuestionarioAlumno.puntajeLogrado} + ' / ' + ${nuevoCuestionarioAlumno.unCuestionario.puntajeFinal}"></h1>
+	    
+	    <a class="btn btn-primary" th:ref="@{/hacerAlumnoCuestionario}">Elegir otro cuestionario</a>
+	  </div>
+	</div>
+	
+	<br>
+	<a href="/" class="header-button">Volver al inicio</a>
+</div>
+<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

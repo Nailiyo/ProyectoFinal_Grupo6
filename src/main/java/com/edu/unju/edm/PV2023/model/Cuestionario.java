@@ -1,16 +1,25 @@
 package com.edu.unju.edm.PV2023.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
+/**import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+//import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;**/
 
 @Component
 @Entity
@@ -22,93 +31,157 @@ public class Cuestionario {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="idDocente")
-	Docente docente;
+	Docente unDocente;
+	
+	//@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name="idAlumno")
+	//Alumno alumno;
+	
+	//@NotNull(message = "se necesita:puntajeFinal")
+	private Integer puntajeFinal;
+	
+	/**@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idPregunta1")
+	//@NotBlank(message= "se necesita: pregunta1")
+	private Pregunta pregunta1;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="idAlumno")
-	Alumno alumno;
+    @JoinColumn(name="idPregunta2")
+	//@NotBlank(message= "se necesita: pregunta2")
+	private Pregunta pregunta2;
 	
-	@NotNull(message = "se necesita:puntajeFinal")
-	private Integer puntajeFinal;
-	@NotBlank(message= "se necesita: pregunta1")
-	private String pregunta1;
-	@NotBlank(message= "se necesita: pregunta2")
-	private String pregunta2;
-	@NotBlank(message= "se necesita: pregunta3")
-	private String pregunta3;
-	@NotBlank(message="se necesita: pregunta4")
-	private String pregunta4;
-	@NotBlank(message="se necesita: pregunta5")
-	private String pregunta5;
-	private Boolean estado;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idPregunta3")
+	//@NotBlank(message= "se necesita: pregunta3")
+	private Pregunta pregunta3;
 	
-	public Cuestionario(){}
-
-	public Cuestionario(Integer idCuestionario, String pregunta1,
-	String pregunta2, String pregunta3, String pregunta4, String pregunta5,
-	Docente docente, Integer puntajeFinal) {
-		super();
-		this.pregunta1 = pregunta1;
-		this.pregunta2 = pregunta2;
-		this.pregunta3 = pregunta3;
-		this.pregunta4 = pregunta4;
-		this.pregunta5 = pregunta5;
-		this.idCuestionario = idCuestionario;
-		this.docente = docente;
-		this.puntajeFinal = puntajeFinal;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="idPregunta4")
+	//@NotBlank(message="se necesita: pregunta4")
+	private Pregunta pregunta4;
+	**/
+	
+	@NotBlank(message= "PONELE DESCRIPCION")
+	private String descripcion;
+	
+	@NotBlank(message= "AGREGA TITULO")
+	private String titulo;
+	
+	private Boolean estadoCuestionario;
+	
+	public Cuestionario(){
+		
 	}
+	
+	public Cuestionario(Integer idCuestionario, Docente unDocente, @NotBlank(message = "AGREGA TITULO") String titulo, @NotBlank(message= "PONELE DESCRIPCION") String descripcion, Boolean estadoCuestionario, Integer puntajeFinal) {
+		
+		this.idCuestionario = idCuestionario;
+		this.descripcion  = descripcion;
+		this.estadoCuestionario = estadoCuestionario;
+		this.puntajeFinal = puntajeFinal;
+		this.titulo = titulo;
+		this.unDocente = unDocente;
+		
+	}
+
+	
 	public Integer getIdCuestionario() {
 		return idCuestionario;
 	}
 	public void setIdCuestionario(Integer idCuestionario) {
 		this.idCuestionario = idCuestionario;
 	}
-	public String getPregunta1() {
-		return pregunta1;
-	}
-	public void setPregunta1(String pregunta1) {
-		this.pregunta1 = pregunta1;
-	}
-	public String getPregunta2() {
-		return pregunta2;
-	}
-	public void setPregunta2(String pregunta2) {
-		this.pregunta2 = pregunta2;
-	}
-	public String getPregunta3() {
-		return pregunta3;
-	}
-	public void setPregunta3(String pregunta3) {
-		this.pregunta3 = pregunta3;
-	}
-	public String getPregunta4() {
-		return pregunta4;
-	}
-	public void setPregunta4(String pregunta4) {
-		this.pregunta4 = pregunta4;
-	}
-	public String getPregunta5() {
-		return pregunta5;
-	}
-	public void setPregunta5(String pregunta5) {
-		this.pregunta5 = pregunta5;
-	}
-	public Boolean getEstado() {
-		return estado;
-	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-		public Integer getPuntajeFinal() {
+
+
+	public Integer getPuntajeFinal() {
 		return puntajeFinal;
 	}
+
+
 	public void setPuntajeFinal(Integer puntajeFinal) {
 		this.puntajeFinal = puntajeFinal;
 	}
-	public Docente getDocente() {
-		return docente;
+
+
+	/**public Pregunta getPregunta1() {
+		return pregunta1;
 	}
-	public void setDocente(Docente docente) {
-		this.docente = docente;
-	}	
+
+
+	public void setPregunta1(Pregunta pregunta1) {
+		this.pregunta1 = pregunta1;
+	}
+
+
+	public Pregunta getPregunta2() {
+		return pregunta2;
+	}
+
+
+	public void setPregunta2(Pregunta pregunta2) {
+		this.pregunta2 = pregunta2;
+	}
+
+
+	public Pregunta getPregunta3() {
+		return pregunta3;
+	}
+
+
+	public void setPregunta3(Pregunta pregunta3) {
+		this.pregunta3 = pregunta3;
+	}
+
+
+	public Pregunta getPregunta4() {
+		return pregunta4;
+	}
+
+
+	public void setPregunta4(Pregunta pregunta4) {
+		this.pregunta4 = pregunta4;
+	}**/
+
+
+	public Boolean getEstadoCuestionario() {
+		return estadoCuestionario;
+	}
+
+
+	public void setEstadoCuestionario(Boolean estadoCuestionario) {
+		this.estadoCuestionario = estadoCuestionario;
+	}
+
+
+	public Docente getUnDocente() {
+		return unDocente;
+	}
+
+
+	public void setUnDocente(Docente unDocente) {
+		this.unDocente = unDocente;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
+	
 }

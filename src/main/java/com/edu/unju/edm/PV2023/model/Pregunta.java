@@ -2,29 +2,59 @@ package com.edu.unju.edm.PV2023.model;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+/**import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;**/
 
 @Component
 @Entity
-public class Preguntas {
+public class Pregunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPregunta;
+    
+    @NotBlank(message="se necesita: descripcion")
+    @Size(min=5, max=20, message="INGRESA PREGUNTA LOCO")
     private String descripcion;
+    
+    @NotBlank(message="COLOCA OPCION 1")
+    @Size(min=5, max=20)
     private String opcion1;
+    
+    @NotBlank(message="COLOCA OPCION 2")
+    @Size(min=5, max=20)
     private String opcion2;
+    
+    @NotBlank(message="COLOCA OPCION 3")
+    @Size(min=5, max=20)
     private String opcion3;
+    
+    @NotBlank(message="COLOCA OPCION 4")
+    @Size(min=5, max=20)
     private String opcion4;
+    
     private Integer opcionCorrecta;
-    private Integer puntaje;
-    private Boolean estado;
-    private String nivel;
-    public Preguntas(){}
-    public Preguntas(Integer idPregunta,Integer puntaje,String nivel, String descripcion, String opcion1,
-                     String opcion2, String opcion3, String opcion4, Integer opcionCorrecta, Boolean estado){
+    
+    /**@NotNull(message="CUANTO PUNTOS VALE")
+    private Integer puntaje;**/
+    
+    private Boolean estadoPregunta;
+    
+    private Integer nivelPregunta;
+    public Pregunta(){}
+    public Pregunta(Integer idPregunta,Integer puntaje,Integer nivelPregunta, String descripcion, String opcion1,
+                     String opcion2, String opcion3, String opcion4, Integer opcionCorrecta, Boolean estadoPregunta){
         this.idPregunta = idPregunta;
         this.descripcion = descripcion;
         this.opcion1 = opcion1;
@@ -32,17 +62,17 @@ public class Preguntas {
         this.opcion3 = opcion3;
         this.opcion4 = opcion4;
         this.opcionCorrecta = opcionCorrecta;
-        this.estado = estado;
-        this.puntaje = puntaje;
-        this.nivel = nivel;
+        this.estadoPregunta = estadoPregunta;
+        //this.puntaje = puntaje;
+        this.nivelPregunta = nivelPregunta;
     }
 
-    public String getNivel() {
-        return nivel;
+    public Integer getNivelPregunta() {
+        return nivelPregunta;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setNivelPregunta(Integer nivelPregunta) {
+        this.nivelPregunta = nivelPregunta;
     }
 
     public Integer getIdPregunta() {
@@ -101,19 +131,19 @@ public class Preguntas {
         this.opcionCorrecta = opcionCorrecta;
     }
 
-    public Boolean getEstado() {
-        return estado;
+    public Boolean getEstadoPregunta() {
+        return estadoPregunta;
     }
 
-    public Integer getPuntaje() {
+    /**public Integer getPuntaje() {
         return puntaje;
     }
     public void setPuntaje(Integer puntaje){
         this.puntaje = puntaje;
-    }
+    }**/
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
+    public void setEstadoPregunta(Boolean estadoPregunta) {
+        this.estadoPregunta = estadoPregunta;
     }
 
 }

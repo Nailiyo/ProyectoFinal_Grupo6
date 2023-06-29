@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>SUPER REGISTRACION</title>
+  <title>Carga de Docente</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <style>
     body {
@@ -111,50 +111,49 @@
     }
   </style>
 </head>
-<section>
-  <span>Virtual-EDM</span>
-</section>
-<header>
-  <h1>Virtual-EDM</h1>
-  <nav>
-  	
-  	<h3>LA REGISTRACION</h3>
-			<form th:object="${docenteParaLoguear}" th:action="@{/principal}" method="post">
-			<div class="mb-3">
-  				<label for="usuario" class="form-label">Usuario</label>
-  				<input type="text" class="form-control" id="usuario" th:field="*{idDocente}" name="usuario">
-			</div>
-			<div class="mb-3">
-  				<label for="contraseña" class="form-label">Contraseña</label>
-  				<input type="password" class="form-control" id="contraseña" th:field="*{contraseñaDocente}" name="password">
-			</div>
-			
-			<button type="submit" class="btn btn-primary">Ingresar</button>
-			
-		</form>
-		<!-- ESTAN COMENTADOS -->
-	<!-- <a href="/cargarDocente">Crear Docente</a>
-  	<a href="/cargarAlumno">Crear Alumno</a>
-  	<a href="/cargarPregunta">Crear Pregunta</a>
-  	<a href="/cargarCuestionario">Crear Cuestionario</a>
-  	 -->
-  	<a href="/listaDeAlumnos">Lista de Alumnos</a>
-    <a href="/listaDeDocentes">Lista de Docentes</a>
-    <a href="/hacerAlumnoCuestionario">Tomar Cuestionario</a>
-    <a href="/cuestionariosRealizados">Cuestionarios Hechos</a>
-    <a href="/listadoCuestionario">Lista de Cuestionarios</a>
-  </nav>
-</header>
-<!-- <article>
-   <h1>Sobre nosotros</h1>
-  <p>Somos un equipo comprometido con la educación y el aprendizaje. Nuestra misión es brindar una plataforma interactiva y accesible que promueva el conocimiento y la excelencia académica. Nos esforzamos por proporcionar herramientas innovadoras que faciliten el proceso de enseñanza y aprendizaje, tanto para docentes como para estudiantes.</p>
-  <p>En nuestra plataforma, encontrarás recursos educativos de calidad, diseñados para abarcar diversas áreas de estudio. Nuestro objetivo principal es fomentar el crecimiento intelectual y el desarrollo de habilidades en un entorno virtual dinámico y colaborativo.</p>
-  <p>Valoramos la participación activa y el compromiso con la educación. Estamos dedicados a ayudar a los docentes a crear experiencias de aprendizaje enriquecedoras y a los estudiantes a alcanzar su máximo potencial. Únete a nosotros en este viaje educativo y descubre todo lo que nuestra plataforma tiene para ofrecer.</p>
-  <p></p>		
-	<img class="imagen-educativa" src="/images/calidad-educativa.jpg" alt="Imagen educativa">
-</article>
--->
-<!-- <footer>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<h3>Agregando Preguntas</h3>
+	
+	
+	<form th:object="${cuestionarioPregunta}" th:action="@{'/guardarCuestionarioPregunta/' + ${idCuestionario}}" method="post">
+					
+					<div class="form-group mb-3">
+					
+						<label class="custom-label">Preguntas Seleccionadas</label>
+						<select class="form-control" th:field="*{pregunta}">
+						<option th:each="pregunta:${listadoPreguntas}" th:value="${pregunta.idPregunta}" 
+						th:text="${pregunta.descripcion}"></option>
+						</select>
+						<br><br>
+					
+						<input class="btn btn-registrar" type="submit" value="REGISTRAR">
+						<input class="btn btn-registrar" type="reset" value="RESETEAR">
+						
+						
+						
+						
+	</div>
+	</form>
+	
+	<!-- <form th:object="${cuestionarioPregunta}" th:action="@{'/guardarCuestionarioPregunta/' + ${idCuestionario}}" method="post">
+	 <select th:field="*{pregunta}" required>
+	 <br><br>
+	                <option value="">Seleccionar pregunta...</option>
+	                <option th:each="pregunta : ${listadoPreguntas}" th:value="${pregunta}" th:text="${pregunta.descripcion}"></option>
+	            </select>
+	            
+	            <input type="submit" value="REGISTRAR">
+
+</form> -->
+
+
+</body>
+<footer>
   <div class="footer-container">
     <div class="footer-row">
       <div class="footer-column">
@@ -180,10 +179,9 @@
     </div>
     <div class="footer-row">
       <div class="footer-column">
-        <p class="text-center">© 2023 VirtualEDM. Todos los derechos reservados.</p>
+        <p class="text-center">© 2023 Virtual. Todos los derechos reservados.</p>
       </div>
     </div>
   </div>
 </footer>
- -->
 </html>

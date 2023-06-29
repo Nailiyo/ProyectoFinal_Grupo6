@@ -214,18 +214,23 @@
 						
 						<label class="custom-label">Descripcion</label>
 						<input class="form-control" type="text" th:field="*{descripcion}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 						
 						<label class="custom-label">Opcion 1</label>
 						<input class="form-control" type="text" th:field="*{opcion1}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('opcion1')}" th:errors="*{opcion1}"></div>
 						
 						<label class="custom-label">Opcion 2</label>
 						<input class="form-control" type="text" th:field="*{opcion2}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('opcion2')}" th:errors="*{opcion2}"></div>
 						
 						<label class="custom-label">Opcion 3</label>
 						<input class="form-control" type="text" th:field="*{opcion3}"><br>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('opcion3')}" th:errors="*{opcion3}"></div>
 						
 						<label class="custom-label">Opcion 4</label>
 						<input class="form-control" type="text" th:field="*{opcion4}"><br> 
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('opcion4')}" th:errors="*{opcion4}"></div>
 						
 						 <label class="custom-label">Opción Correcta:</label>
             				<select th:field="*{opcionCorrecta}" class="form-control">
@@ -236,19 +241,22 @@
            					 </select><br>
 
    						 <label class="custom-label">Nivel:</label>
-    						<select th:field="*{nivel}" class="form-control">
-      						<option th:value="facil">Fácil</option>
-      						<option th:value="intermedio">Intermedio</option>
-      						<option th:value="dificil">Difícil</option>
+    						<select th:field="*{nivelPregunta}" class="form-control">
+      						<option th:value="1">Fácil</option>
+      						<option th:value="2">Intermedio</option>
+      						<option th:value="3">Difícil</option>
     						</select>
     						
-						<label class="custom-label">Puntaje</label>
+						<!-- <label class="custom-label">Puntaje</label>
 						<input class="form-control" type="number" th:field="*{puntaje}"><br>
-						
-						<!--<label class="custom-label">Estado</label>
+						<div class="alert alert-danger" th:if="${#fields.hasErrors('puntaje')}" th:errors="*{puntaje}"></div>
+						<label class="custom-label">Estado</label>
             			<input class="checkbox-input" type="checkbox" th:field="*{estado}"><br>-->
+            			
 						
 						<input class="btn btn-registrar" type="submit" value="CARGAR">
+						<input class="btn btn-registrar" type="reset" value="RESETEAR">
+						
 
 					</div>
 				</form>

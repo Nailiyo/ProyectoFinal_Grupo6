@@ -1,6 +1,7 @@
 package com.edu.unju.edm.PV2023.service;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ public interface ICuestionarioService {
 
 	public void cargarCuestionario(Cuestionario unCuestionario);
 	public void eliminarCuestionario(Integer unIdCuestionario);
-	public ArrayList<Cuestionario> listarCuestionarios();
-	public Cuestionario mostrarUnCuestionario(Integer idCuestionario);
+	public List<Cuestionario> listarCuestionarios();
+	public Cuestionario mostrarCuestionario(Integer idCuestionario);
 	public void eliminarTodosLosCuestionarios();
-	public Cuestionario modificarUnCuestionario(Integer idCuestionario);
+	public Cuestionario modificarCuestionario(Integer idCuestionario);
 	
 }

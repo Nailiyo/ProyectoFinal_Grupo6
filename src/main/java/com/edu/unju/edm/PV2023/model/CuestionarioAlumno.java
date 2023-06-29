@@ -1,42 +1,54 @@
 package com.edu.unju.edm.PV2023.model;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+/**import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;**/
 @Component
 @Entity
 public class CuestionarioAlumno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCuestionarioAlumno;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idAlumno")
-	Alumno alumno;
+	Alumno unAlumno;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idCuestionario")
-	Cuestionario cuestionario;
+	Cuestionario unCuestionario;
+	
 	@NotNull(message="se necesita: FechaRealizada")
-	private Date fechaCompletado;
+	private String fechaCompletado;
+	
 	@NotNull(message="se necesita: Puntaje Logrado")
-	private int puntajeLogrado;
-	private Boolean estado;
+	private Integer puntajeLogrado;
+	
+	// Boolean estadoCuestionarioAlumno;
 	
 	public CuestionarioAlumno() {}
-	public CuestionarioAlumno(Alumno alumno, Cuestionario cuestionario, Date fechaCompletado, int puntajeLogrado, Boolean estado) {
-		this.alumno = alumno;
-        this.cuestionario = cuestionario;
+	public CuestionarioAlumno(Alumno unAlumno, Cuestionario unCuestionario, String fechaCompletado, Integer puntajeLogrado) {
+		this.unAlumno = unAlumno;
+        this.unCuestionario = unCuestionario;
         this.fechaCompletado = fechaCompletado;
         this.puntajeLogrado = puntajeLogrado;
-        this.estado = estado;
+        //this.estadoCuestionarioAlumno = estadoCuestionarioAlumno;
     }
 	public Integer getIdCuestionarioAlumno() {
 		return idCuestionarioAlumno;
@@ -44,34 +56,34 @@ public class CuestionarioAlumno {
 	public void setIdCuestionarioAlumno(Integer idCuestionarioAlumno) {
 		this.idCuestionarioAlumno= idCuestionarioAlumno;
 	}
-	public Alumno getAlumno() {
-		return alumno;
+	public Alumno getUnAlumno() {
+		return unAlumno;
 	}
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
+	public void setUnAlumno(Alumno unAlumno) {
+		this.unAlumno = unAlumno;
 	}
-	public Cuestionario getCuestionario() {
-		return cuestionario;
+	public Cuestionario getUnCuestionario() {
+		return unCuestionario;
 	}
-	public void setCuestionario(Cuestionario cuestionario) {
-		this.cuestionario = cuestionario;
+	public void setUnCuestionario(Cuestionario unCuestionario) {
+		this.unCuestionario = unCuestionario;
 	}
-	public Date getFechaCompletado() {
+	public String getFechaCompletado() {
 		return fechaCompletado;
 	}
-	public void setFechaCompletado(Date fechaCompletado) {
+	public void setFechaCompletado(String fechaCompletado) {
 		this.fechaCompletado = fechaCompletado;
 	}
-	public int getPuntajeLogrado() {
+	public Integer getPuntajeLogrado() {
 		return puntajeLogrado;
 	}
-	public void setPuntajeLogrado(int puntajeLogrado) {
+	public void setPuntajeLogrado(Integer puntajeLogrado) {
 		this.puntajeLogrado = puntajeLogrado;
 	}
-	public Boolean getEstado() {
-		return estado;
+	/**public Boolean getEstadoCuestionarioAlumno() {
+		return estadoCuestionarioAlumno;
 	}
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
+	public void setEstadoCuestionarioAlumno(Boolean estadoCuestionarioAlumno) {
+		this.estadoCuestionarioAlumno = estadoCuestionarioAlumno;
+	}**/
 }

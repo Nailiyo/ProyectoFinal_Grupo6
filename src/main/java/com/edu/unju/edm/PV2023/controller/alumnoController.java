@@ -1,13 +1,15 @@
 package com.edu.unju.edm.PV2023.controller;
 
 import java.io.IOException;
-import java.util.Base64;
+
+import javax.validation.Valid;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.service.IAlumnoService;
 
+//import jakarta.validation.Valid;
+
 
 
 @Controller
@@ -28,39 +32,55 @@ import com.edu.unju.edm.PV2023.service.IAlumnoService;
 public class alumnoController {
     private static final Log G6 = LogFactory.getLog(alumnoController.class);
     @Autowired
-    Alumno Alumnos;
-    @Autowired
+    Alumno unAlumno;
     @Qualifier("serviceAlumnoMySQL")
-    IAlumnoService servicio;
+    @Autowired
+    IAlumnoService alumnoService;
     @GetMapping("/cargarAlumno")
     public ModelAndView cargarAlumno(){
-        ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante");
-        cargarAlumno.addObject("alumno", Alumnos);
+        ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante.html");
+        cargarAlumno.addObject("alumno", unAlumno);
         return cargarAlumno;
     }
     @PostMapping("/guardarAlumno")
-    public ModelAndView guardarAlumno(@ModelAttribute("cargarAlumno")Alumno unAlumno){
+    public ModelAndView guardarAlumno(@Valid @ModelAttribute("alumno")Alumno unAlumnoConDatos, BindingResult resultado){
+    	if(resultado.hasErrors()) {
+    		G6.error(resultado.getAllErrors());
+    		ModelAndView cargarAlumno = new ModelAndView("cargarEstudiante.html");
+            cargarAlumno.addObject("alumno", unAlumnoConDatos);
+            return cargarAlumno;
+    	}
+    	
         ModelAndView listarAlumnos = new ModelAndView("mostrarEstudiante");
-        G6.warn("mostrando alumno"+unAlumno.getNombreAlumno());
+        G6.warn("mostrando alumno"+unAlumnoConDatos.getNombreAlumno());
         try{
-            servicio.cargarAlumno(unAlumno);
+            alumnoService.cargarAlumno(unAlumnoConDatos);
         }catch(Exception e){}
-        listarAlumnos.addObject("alumnoListado",servicio.listarAlumnos());
+        listarAlumnos.addObject("alumnoListado",alumnoService.listarAlumnos());
         return listarAlumnos;
     }
+    
+    @GetMapping("/listaDeAlumnos")
+	public ModelAndView mostrarAlumnos(){
+		ModelAndView listaDeAlumnos = new ModelAndView("vistaAlumno");
+		listaDeAlumnos.addObject("alumnoListado", unAlumno);
+		listaDeAlumnos.addObject("alumnoListado", alumnoService.listarAlumnos());
+		return listaDeAlumnos;
+	}
+
     
     @GetMapping("/eliminarAlumno/{idAlumno}")
 	@ResponseBody
 	public ModelAndView borrarAlumno(@PathVariable Integer idAlumno) {
 		
 		try {
-			servicio.eliminarAlumno(idAlumno);
+			alumnoService.eliminarAlumno(idAlumno);
 			G6.error("PASANDO...");
 		} catch (Exception e) {
 			G6.error("encontrando: producto NO encontrado");
 		}
 		ModelAndView listadoAlumno = new ModelAndView("redirect:/guardarAlumno");
-		listadoAlumno.addObject("alumnoListado", servicio.listarAlumnos());
+		listadoAlumno.addObject("alumnoListado", alumnoService.listarAlumnos());
 		
 		return listadoAlumno;
 		}
@@ -70,7 +90,7 @@ public class alumnoController {
 		
 		ModelAndView modelAndView = new ModelAndView("cargarEstudiante");
 		try {
-			modelAndView.addObject("alumnoListado", servicio.mostrarUnAlumno(idAlumno));
+			modelAndView.addObject("alumnoListado", alumnoService.mostrarAlumno(idAlumno));
 		}catch (Exception e) {
 			modelAndView.addObject("modificacionDeAlumnoErrorMessage", e.getMessage());
 		}
@@ -81,21 +101,21 @@ public class alumnoController {
 	}
 	
 	@PostMapping(value="/modificarAlumno")
-	public ModelAndView modificarAlumno(@ModelAttribute ("cargarEstudiante") Alumno nuevoAlumno) throws IOException {
+	public ModelAndView modificarAlumno(@ModelAttribute ("cargarAlumno") Alumno nuevoAlumno) throws IOException {
 		
-		ModelAndView listadoFinal= new ModelAndView("mostrarEstudiante");
+		ModelAndView listadoFinal= new ModelAndView("mostrarAlumno");
 		
 		G6.warn("Mostrando el nuevo producto " + nuevoAlumno.getNombreAlumno());
 		
 		try {
 			
-			servicio.cargarAlumno(nuevoAlumno);
+			alumnoService.cargarAlumno(nuevoAlumno);
 			
 		}catch(Exception e) {
 			listadoFinal.addObject("pasa por aqui", e.getMessage());
 		}
 		
-		listadoFinal.addObject("listado", servicio.listarAlumnos());
+		listadoFinal.addObject("listadoAlumno", alumnoService.listarAlumnos());
 		
 		return listadoFinal;
 	}
