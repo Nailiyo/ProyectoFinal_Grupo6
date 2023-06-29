@@ -3,8 +3,6 @@ package com.edu.unju.edm.PV2023.service.imp;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ public class ImpMySQLPreguntaService implements IPreguntaService{
 	@Autowired
 	PreguntaRepository preguntaRepository;
 	
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLPreguntaService.class);
 	
 	@Override
 	public void cargarPregunta(Pregunta unaPregunta) {

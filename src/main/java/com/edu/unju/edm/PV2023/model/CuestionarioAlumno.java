@@ -1,7 +1,5 @@
 package com.edu.unju.edm.PV2023.model;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
