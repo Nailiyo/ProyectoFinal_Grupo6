@@ -3,6 +3,7 @@ package com.edu.unju.edm.PV2023.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.unju.edm.PV2023.model.Docente;
@@ -20,6 +21,10 @@ public class indexController {
         return modelAndView;
     }
 	
-	
+	@PostMapping("/principal")
+	public ModelAndView principal() {
+		ModelAndView modelAndView = new ModelAndView("principal");
+		return modelAndView;
+	}
 	
 }

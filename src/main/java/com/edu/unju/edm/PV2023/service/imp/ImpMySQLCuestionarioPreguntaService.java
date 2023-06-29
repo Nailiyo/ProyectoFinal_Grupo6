@@ -5,11 +5,8 @@ import com.edu.unju.edm.PV2023.model.Pregunta;
 import com.edu.unju.edm.PV2023.model.Cuestionario;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -39,8 +36,7 @@ public class ImpMySQLCuestionarioPreguntaService implements ICuestionarioPregunt
 	
 	@Autowired
 	PreguntaRepository preguntaRepository;
-	
-	private static final Log G6 = LogFactory.getLog(ImpMySQLCuestionarioPreguntaService.class);
+
 
 	@Override
 	public void cargarCuestionarioPregunta(CuestionarioPregunta unCuestionarioPregunta, Integer idCuestionario) {

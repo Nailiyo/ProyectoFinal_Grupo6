@@ -1,22 +1,11 @@
 package com.edu.unju.edm.PV2023.controller;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.edu.unju.edm.PV2023.model.CuestionarioPregunta;
@@ -30,7 +19,6 @@ import com.edu.unju.edm.PV2023.service.IPreguntaService;
 @Controller
 public class cuestionarioPreguntaController {
 
-	private static final Log G6 = LogFactory.getLog(cuestionarioPreguntaController.class);
 	
 	//@Qualifier("serviceCuestionarioPreguntasMySQL")
 	@Autowired

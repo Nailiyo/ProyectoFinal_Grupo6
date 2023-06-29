@@ -3,8 +3,6 @@ package com.edu.unju.edm.PV2023.service.imp;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,8 +20,6 @@ public class ImpMySQLDocenteService implements IDocenteService{
 
 	@Autowired
 	DocenteRepository docenteRepository;
-	
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLDocenteService.class);
 
 	@Override
 	public void cargarDocente(Docente unDocente) {

@@ -2,12 +2,9 @@ package com.edu.unju.edm.PV2023.service.imp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -29,7 +26,6 @@ public class ImpMySQLCuestionarioAlumnoService implements ICuestionarioAlumnoSer
 	@Autowired
 	ICuestionarioPreguntaService cuestionarioPreguntaService;
 	
-	private static final Log G6 = LogFactory.getLog(ImpMySQLCuestionarioAlumnoService.class);
 	
 	@Override
 	public void cargarCuestionarioAlumno(CuestionarioAlumno unCuestionarioAlumno) {

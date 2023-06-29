@@ -5,13 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.edu.unju.edm.PV2023.model.Alumno;
 import com.edu.unju.edm.PV2023.model.Cuestionario;
 import com.edu.unju.edm.PV2023.repository.CuestionarioRepository;
 import com.edu.unju.edm.PV2023.service.ICuestionarioService;
@@ -22,8 +18,6 @@ public class ImpMySQLCuestionarioService implements ICuestionarioService{
 
 	@Autowired
 	CuestionarioRepository cuestionarioRepository;
-	
-	private static final Log grupo6 = LogFactory.getLog(ImpMySQLCuestionarioService.class);
 	
 	@Override
 	public void cargarCuestionario(Cuestionario unCuestionario) {
