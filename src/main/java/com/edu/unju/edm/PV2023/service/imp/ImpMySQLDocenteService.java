@@ -3,7 +3,6 @@ package com.edu.unju.edm.PV2023.service.imp;
 import java.util.ArrayList;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,7 +20,7 @@ public class ImpMySQLDocenteService implements IDocenteService{
 
 	@Autowired
 	DocenteRepository docenteRepository;
-	
+
 
 	@Override
 	public void cargarDocente(Docente unDocente) {

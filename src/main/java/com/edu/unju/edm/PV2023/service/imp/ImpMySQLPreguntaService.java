@@ -19,7 +19,6 @@ public class ImpMySQLPreguntaService implements IPreguntaService{
 	@Autowired
 	PreguntaRepository preguntaRepository;
 	
-	
 	@Override
 	public void cargarPregunta(Pregunta unaPregunta) {
 		
