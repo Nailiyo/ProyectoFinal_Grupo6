@@ -36,8 +36,6 @@ public class ImpMySQLCuestionarioPreguntaService implements ICuestionarioPregunt
 	
 	@Autowired
 	PreguntaRepository preguntaRepository;
-
-
 	@Override
 	public void cargarCuestionarioPregunta(CuestionarioPregunta unCuestionarioPregunta, Integer idCuestionario) {
 		unCuestionarioPregunta.setCuestionario(cuestionarioRepository.findById(idCuestionario).get());

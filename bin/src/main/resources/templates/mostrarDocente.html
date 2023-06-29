@@ -7,15 +7,13 @@
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #eaf2f8;
-        font-family: Arial, sans-serif;
-		justify-content: space-between;
-      	align-items: center;
+        margin: 0;
+        padding: 0;
       }
-      
-      .header {
+	  
+	  .header {
       background-color: #fff;
-      padding: 15px;
+      padding: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -47,40 +45,37 @@
     .header-button:hover {
       background-color: #005c89;
     }
-
+    
       h1 {
         text-align: center;
         margin-top: 20px;
       }
 
       table {
-        font-size: 25px;
-        border: 2px solid #005c89;
+        width: 100%;
         border-collapse: collapse;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-        align-items: center;
+        margin-top: 20px;
       }
 
-      td, th {
+      th {
         background-color: #f2f2f2;
         font-weight: bold;
         padding: 10px;
         text-align: left;
-        border: 2px solid #005c89;
         border-bottom: 1px solid #ddd;
       }
 
-      thead {
-		  box-shadow: 0 3px 6px #000003;
-        background-color: rgb(0, 128, 128);
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
       }
-		tr:nth-child(even) {
+
+      tr:nth-child(even) {
         background-color: #f9f9f9;
-        }
+      }
+
       .btn {
-        padding: 10px 10px;
+        padding: 5px 10px;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -95,59 +90,6 @@
       .btn-primary:hover {
         background-color: #005c89;
       }
-      
-      footer{
-   	    position: absolute;
-        bottom: 0;
-        left: 0;
-    	right: 0;
-    	background: #fff;
-    	height: auto;
-    	width: 100vw;
-    	font-family: "Open Sans";
-    	padding-top: 40px;
-    	color: #fff;
-	  }
-	  .footer-content{
-    	display: flex;
-    	align-items: center;
-    	justify-content: center;
-    	flex-direction: column;
-    	text-align: center;
-	  }
-	  .footer-content h3{
-    	font-size: 32px;
-    	font-weight: 32px;
-    	font-family: cursive;
-    	color: #005c89;
-    	text-transform: capitalize;
-    	line-height: 3rem;
-	  }
- 	  .footer-content p{
-    	max-width: 500px;
-    	margin: 10px auto;
-    	line-height: 28px;
-    	font-size: 32px;
-    	color: #005c89;
-		}
-
-	  .footer-bottom{
-    	background: #fff;
-    	width: 100vw;
-    	padding: 20px ;
-    	text-align: center;
-   		}
- 	  .footer-bottom p{
-    	font-size: 18px;
-    	color: #005c89;
-    	word-spacing: 2px;
-    	text-transform: capitalize;
-		}
-	  .footer-bottom span{
-    	text-transform: uppercase;
-    	opacity: 1;
-    	font-weight: 200;
-    	}
     </style>
 </head>
 
@@ -166,7 +108,6 @@
         <td><b> DNI </b> </td>
         <td><b> Nombre </b> </td>
         <td><b> Apellido </b> </td>
-        <td><b> EMAIL </b> </td>
         <td><b> Estado </b> </td>
         </tr>
         <tr>
@@ -176,25 +117,43 @@
                   <td th:text="${docente.dniDocente}"></td>
                   <td th:text="${docente.nombreDocente}"></td> 
                   <td th:text="${docente.apellidoDocente}"></td>
-                  <td th:text="${docente.emailDocente}"></td>
                   <td th:text="${docente.estadoDocente}"></td> 
-            	</tr>
-          <tr>
-    <td colspan="5">
-      <button class="btn btn-primary" type="submit">Editar</button>
-      <button class="btn btn-primary" type="submit">Borrar</button>
-    </td>
-  </tr> 
+                  <td> 
+                         <button class="btn btn-primary" type="submit">Editar</button> 
+                         <button class="btn btn-primary" type="submit">Borrar</button>
+                 </td>
     </table>
 
 </body>
 <footer>
-        <div class="footer-content">
-            <h3>VIRTUAL EDM</h3>
-            <p>Un lugar para aprender y crecer juntos</p>
-        </div>
-        <div class="footer-bottom">
-            <p>2023 Virtual. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+  <div class="footer-container">
+    <div class="footer-row">
+      <div class="footer-column">
+        <h3>Virtual EDM</h3>
+        <p>Un lugar para aprender y crecer juntos</p>
+      </div>
+      <div class="footer-column">
+        <h4>Enlaces</h4>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/cuestionarioAlumno">Cuestionarios</a></li>
+          <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Contacto</h4>
+        <ul>
+          <li><i class="fa fa-map-marker"></i> Dirección: Avda Italia Nro 47, San Salvador de Jujuy</li>
+          <li><i class="fa fa-envelope"></i> Email: info@virtualedm.com</li>
+          <li><i class="fa fa-phone"></i> Teléfono: +54 388 912 1831</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-row">
+      <div class="footer-column">
+        <p class="text-center">© 2023 Virtual. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>

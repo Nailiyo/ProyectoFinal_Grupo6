@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>SUPER REGISTRACION</title>
+  <title>Carga de Alumno</title>
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <style>
     body {
@@ -11,6 +11,7 @@
       margin: 0;
       padding: 0;
     }
+	
 	.header {
       background-color: #fff;
       padding: 10px;
@@ -45,6 +46,7 @@
     .header-button:hover {
       background-color: #005c89;
     }
+    
     .container-fluid {
       display: flex;
       justify-content: center;
@@ -52,7 +54,7 @@
       height: 100vh;
     }
 
-    .docente {
+    .alumno {
       background-color: #fff;
       padding: 20px;
       border-radius: 10px;
@@ -72,6 +74,8 @@
     .custom-label {
       font-weight: bold;
       color: #0083ca;
+      display: inline-block;
+      margin-bottom: 10px;
     }
 
     .form-control {
@@ -81,7 +85,7 @@
       border: 1px solid #ccc;
       box-sizing: border-box;
     }
-     .checkbox-input {
+    .checkbox-input {
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
@@ -92,7 +96,6 @@
   vertical-align: middle;
   margin-bottom: 0;
 }
-
     /* Estilos para los botones */
     .btn-registrar {
       display: block;
@@ -111,45 +114,49 @@
     }
   </style>
 </head>
+
 <body>
-	
-	<div class="header">
+	 <div class="header">
     <img src="/images/logo.PNG" alt="Logo de la página" class="header-logo">
     <h1 class="header-text">Virtual-EDM</h1>
     <a href="/" class="header-button">Volver al inicio</a>
   </div>
 	
-	<div class="container px-5">
-    	<div class="row gx-5 align-items-center justify-content-center">
-    		<div class="col-lg-8 col-xl-7 col-xxl-6">
-    			<div class="my-5 text-center text-xl-start">
-                	<h1 class="display-5 fw-bolder mb-2">SUPER CUESTIONARIOS</h1>
-                	<p class="lead fw-normal mb-4">PUEDES HACER CUESTIONARIOS CUANDO QUIERAS.</p>
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-	                    <a class="btn btn-primary btn-warning px-4 me-sm-3" href="/cargarPregunta">Crea tus primeras preguntas</a>
-                     </div>
-                 </div>
-              </div>
-         	<div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="/images/LogoGrande.jpg" alt="..."></div>
-      	 </div>
-      	 
-      	 <div class="container col-lg-12 mx-auto p-4 rounded-5 bg-secondary bg-opacity-10">
-	<div class="button-group text-center">
-	<a class="btn btn-secondary" href="/cargarCuestionario">Crear Cuestionario</a>
-		<a class="btn btn-secondary" href="/cargarAlumno">Registrar Alumno</a>
-		<a class="btn btn-secondary" href="/cargarDocente">Registrar Docente</a>
-		<a class="btn btn-secondary" href="/hacerAlumnoCuestionario">Probar Cuestionarios</a>
-		<a class="btn btn-secondary" href="/cuestionariosRealizados">Resultados de Cuestionarios</a>
-	</div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6 alumno">
+        <h3>Cargar Alumno</h3>
+        <form th:object="${alumno}" th:action="@{/guardarAlumno}" method="post">
+          <div class="form-group mb-3">
+          
+            <!--<label class="custom-label">idAlumno</label>
+            <input class="form-control" type="number" th:field="*{idAlumno}"><br>-->
+            
+            <label class="custom-label">Nombre</label>
+            <input class="form-control" type="text" th:field="*{nombreAlumno}"><br>
+            
+            <label class="custom-label">Apellido</label>
+            <input class="form-control" type="text" th:field="*{apellidoAlumno}"><br>
+            
+            <label class="custom-label">DNI</label>
+            <input class="form-control" type="number" th:field="*{dniAlumno}"><br>
+            
+            <label class="custom-label">Contraseña</label>
+			<input class="form-control" type="password" th:field="*{contraseñaAlumno}"><br>
+            
+            <!--<label class="custom-label">Estado</label>
+            <input class="checkbox-input" type="checkbox" th:field="*{estadoAlumno}"><br>-->
+
+            <input class="btn btn-registrar" type="submit" value="REGISTRAR">
+          </div>
+        </form>
       </div>
-     </div>
-	
-	
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	
-<!-- <footer>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</body>
+<footer>
   <div class="footer-container">
     <div class="footer-row">
       <div class="footer-column">
@@ -180,6 +187,4 @@
     </div>
   </div>
 </footer>
-	 -->
-</body>
 </html>

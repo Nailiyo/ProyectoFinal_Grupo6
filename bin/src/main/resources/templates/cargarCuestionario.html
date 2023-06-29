@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Carga de Cuestionario</title>
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-3">
+			</div>
+			<div class="col-6 cuestionario">
+				<h3>Crear Cuestionario</h3>
+				<form th:object="${cuestionario}" th:action="@{/guardarCuestionario}" method="post">
+					
+					<div class="form-group mb-3">
+						
+						<label class="custom-label">Pregunta 1</label>
+						<select class="form-control" th:field="*{pregunta.idPregunta}">
+						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
+						</select>
+						<br>
+						
+						<label class="custom-label">Pregunta 2</label>
+						<select class="form-control" th:field="*{pregunta.idPregunta}">
+						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
+						</select>
+						<br>
+						
+						<label class="custom-label">Pregunta 3</label>
+						<select class="form-control" th:field="*{pregunta.idPregunta}">
+						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
+						</select>
+						<br>
+						
+						<label class="custom-label">Pregunta 4</label>
+						<select class="form-control" th:field="*{pregunta.idPregunta}">
+						<option th:each="pregunta:${preguntaListado}" th:value="${pregunta.idPregunta}" th:text="${pregunta.descripcion}"></option>
+						</select>
+						<br>
+						
+						<input class="btn btn-registrar" type="submit" value="Crear">
+						
+	</div>
+	</form>
+	</div>
+	</div>					
+</div>
+
+</body>
+</html>
